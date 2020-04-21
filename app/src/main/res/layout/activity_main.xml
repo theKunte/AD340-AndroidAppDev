@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6C96F877"
+    android:background="@color/background_color"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_world"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="@string/last_first_name"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
@@ -42,8 +42,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/date_WorkedOn"
-        android:textColor="#DCCC41"
-        android:textSize="24sp"
+        android:textColor="@color/text_color_name"
+        android:textSize="@dimen/text_size3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
