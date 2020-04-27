@@ -19,9 +19,9 @@ public class MainActivityTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule
             = new ActivityScenarioRule<>(MainActivity.class);
 
-    @Test
-    public void hasTextOnScreen(){
-        onView(withId(R.id.textView1))
-                .check(matches(withText(R.string.hello_world)));
-    }
+//    @Test
+//    public void hasTextOnScreen(){
+//        onView(withId(R.id.textView1))
+//                .check(matches(withText(R.string.hello_world)));
+//    }
 }

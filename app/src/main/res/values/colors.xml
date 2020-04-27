@@ -2,7 +2,15 @@
 <resources>
     <color name="colorPrimary">#6290EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#8DF3E9</color>
     <color name="background_color">#6C96F877</color>
     <color name="text_color_name">#DCCC41</color>
+    <color name="welco">#C9A885EA</color>
+    <color name="welcomese">#BF2929</color>
+    <color name="week2BackgroundColor">#5AE88FFF</color>
+    <color name="week2Color">#3C1E7C</color>
+    <color name="weekTwoBackground">#045255</color>
+    <color name="SignUpButton">#08969C</color>
+    <color name="dateOfBirthButton">#006064</color>
+    <color name="backgroundCal">#01579B</color>
 </resources>
