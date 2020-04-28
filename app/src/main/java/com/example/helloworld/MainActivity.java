@@ -2,74 +2,96 @@ package com.example.helloworld;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private String Tag;
-    private TextView textView;
-    private Button button;
+    private String TAG;
+    private EditText dateOfBirthInfo;
     private EditText name;
     private EditText email;
     private EditText username;
-    private EditText age;
     private ImageButton dateOfBirth;
 
-
+    DatePickerDialog.OnDateSetListener setListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        name = findViewById(R.id.name);
+        email = findViewById(R.id.email);
+        username = findViewById(R.id.username);
+        dateOfBirthInfo = findViewById(R.id.dateOfBirthInfo);
+
         Button signUpButton = findViewById(R.id.signUpButton);
+        ImageButton dateOfBirth = findViewById(R.id.dateOfBirth);
+
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                Bundle bundle = new Bundle();
-//                bundle.putString(Constant.KEY_NAME, "Jenny Kunte");
-//                bundle.putInt(Constant.KEY_AGE, 30);
-//                intent.putExtras(bundle);
-//                startActivity(intent);
 
-//                textView = findViewById(R.id.textView);
-                button  = findViewById(R.id.signUpButton);
-                name = findViewById(R.id.name);
-                email =findViewById(R.id.email);
-                username = findViewById(R.id.username);
-                age = findViewById(R.id.age);
-                dateOfBirth = findViewById(R.id.dateOfBirth);
-            }
-        });
-
-
-        signUpButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if ( validateName(name)&& validateUsername(username)){
-                    Intent intent =  new Intent(MainActivity.this, Main2Activity.class);
-                    intent.putExtra("name", username.getText().toString());
-                    intent.putExtra("email", email.getText().toString());
-                    intent.putExtra("username", username.getText().toString() );
+                if (validateName(name) && validateUsername(username) && validateEmail(email)) {
+                    intent.putExtra("name", name.getText().toString());
+                    intent.putExtra("username", username.getText().toString());
 
                     startActivity(intent);
                     finish();
                 }
-            }
 
+            }
         });
+
+        dateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, setListener, year, month, day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLUE));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+
+                Calendar cal = Calendar.getInstance();
+                cal.set(Calendar.YEAR, year);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.DAY_OF_MONTH, day);
+                String format = new SimpleDateFormat("dd.mm.yyyy").format(cal.getTime());
+                dateOfBirthInfo.setText(format);
+
+                ageRestrictionCalculator(cal.getTimeInMillis());
+            }
+        };
     }
-    //Validate Name
+
+        //Validate Name
     boolean validateName(EditText name) {
         String signUpFullName = name.getText().toString().trim();
         if (signUpFullName.isEmpty()) {
@@ -87,6 +109,29 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // Calculate Age
+    boolean ageRestrictionCalculator(long date) {
+        Calendar dateOfBirthCal = Calendar.getInstance();
+        dateOfBirthCal.setTimeInMillis(date);
+        Calendar today = Calendar.getInstance();
+
+        int age = today.get(Calendar.YEAR) - dateOfBirthCal.get(Calendar.YEAR);
+        String dateOfBirthInfoInput = dateOfBirthInfo.getText().toString().trim();
+
+        if (dateOfBirthInfoInput.isEmpty()) {
+            dateOfBirthInfo.setError("Field can't be empty.");
+            return false;
+        }
+        if (age < 18) {
+            dateOfBirthInfo.setError("You have to be 18 years old!.");
+            return false;
+        }
+        else {
+            dateOfBirthInfo.setError(null);
+            return true;
+        }
+    }
+
     //Validate UserName
     boolean  validateUsername(EditText username) {
         String usernameInput = username.getText().toString().trim();
@@ -101,56 +146,59 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-
-
+    boolean validateEmail(EditText email){
+        String emailInfo = email.getText().toString().trim();
+        if(emailInfo.isEmpty()){
+            email.setError("Forgot to enter Email address!");
+            return false;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailInfo).matches()) {
+            email.setError("Invalid Email address!");
+            return false;
+        }
+        return true;
+    }
 
     @Override
     protected void onStart(){
         super.onStart();
-        Log.i(Tag, "onStart()");
+        Log.i(TAG, "onStart()");
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstaneState) {
         super.onRestoreInstanceState(savedInstaneState);
-        Log.i(Tag, "onRestoreInstanceState()");
+        Log.i(TAG, "onRestoreInstanceState()");
 
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        Log.i(Tag, "onResume()");
+        Log.i(TAG, "onResume()");
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        Log.i(Tag, "onPause()");
+        Log.i(TAG, "onPause()");
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState){
         super.onSaveInstanceState(outState);
-        Log.i(Tag, "onSaveInstanceState()");
-//        outState.putString(Constant.KEY_NAME, textView.getText().toString());
-//        outState.putString(Constant.KEY_TEXTVIEW, textView.getText().toString());
-//        outState.putString(Constant.KEY_BUTTON, button.getText().toString());
-        // add your data that you want to safe in the second ativity and when you swth layout
+        Log.i(TAG, "onSaveInstanceState()");
 
     }
-
-
     @Override
     protected void onStop(){
         super.onStop();
-        Log.i(Tag, "onStop()");
+        Log.i(TAG, "onStop()");
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        Log.i(Tag, "onDestroy()");
+        Log.i(TAG, "onDestroy()");
     }
 }

@@ -9,11 +9,11 @@
 
     <TextView
         android:id="@+id/welcomeSecondView"
-        android:layout_width="278dp"
-        android:layout_height="112dp"
+        android:layout_width="265dp"
+        android:layout_height="68dp"
         android:layout_marginTop="108dp"
         android:text="@string/welcome_second_Activity"
-        android:textSize="36sp"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,6 @@
         android:layout_marginEnd="@dimen/margin"
         android:layout_marginBottom="@dimen/margin"
         android:textAlignment="center"
-        android:text="Test Test Test "
         android:textSize="@dimen/textSize18"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
