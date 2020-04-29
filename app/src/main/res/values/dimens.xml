@@ -20,4 +20,9 @@
     <dimen name="margin20">20dp</dimen>
     <dimen name="dim30">30dp</dimen>
     <dimen name="marginTop">5dp</dimen>
+    <dimen name="secondViewWelcomeTextView">265dp</dimen>
+    <dimen name="secondViewWelcomHeight">68dp</dimen>
+    <dimen name="SecondWelcomeTopMa">108dp</dimen>
+    <dimen name="textSizeWelcome">26sp</dimen>
+    <dimen name="secButtonMarg">172dp</dimen>
 </resources>
