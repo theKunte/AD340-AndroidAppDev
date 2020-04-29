@@ -9,15 +9,6 @@
     <dimen name="text5AgeDim">404dp</dimen>
     <dimen name="text6Email">472dp</dimen>
     <dimen name="sizeWelcome">24sp</dimen>
-    <dimen name="dimage">65dp</dimen>
-    <dimen name="dimagee">62dp</dimen>
-    <dimen name="dimwelcome">580dp</dimen>
-    <dimen name="dimDoB">444dp</dimen>
-    <dimen name="diumUserName">65dp</dimen>
-    <dimen name="dimName">240dp</dimen>
-    <dimen name="dimass">24dp</dimen>
-    <dimen name="box_inset_layout_padding">5dp</dimen>
-    <dimen name="inner_frame_layout_padding">5dp</dimen>
     <dimen name="marginBottom">35dp</dimen>
     <dimen name="textSize12">12sp</dimen>
     <dimen name="textSize18">18sp</dimen>
@@ -28,5 +19,5 @@
     <dimen name="margin8">10dp</dimen>
     <dimen name="margin20">20dp</dimen>
     <dimen name="dim30">30dp</dimen>
-    <dimen name="marginTopNam">5dp</dimen>
+    <dimen name="marginTop">5dp</dimen>
 </resources>

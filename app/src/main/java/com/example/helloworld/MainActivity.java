@@ -15,14 +15,17 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private String TAG;
-    private EditText dateOfBirthInfo;
+    private TextView dateOfBirthInfo;
     private EditText name;
     private EditText email;
     private EditText username;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         username = findViewById(R.id.username);
         dateOfBirthInfo = findViewById(R.id.dateOfBirthInfo);
+        dateOfBirthInfo.setText("Select Date Of Birth On Calendar:");
 
         Button signUpButton = findViewById(R.id.signUpButton);
         ImageButton dateOfBirth = findViewById(R.id.dateOfBirth);
@@ -52,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("username", username.getText().toString());
 
                     startActivity(intent);
-                    finish();
                 }
 
             }
@@ -80,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, day);
-                String format = new SimpleDateFormat("dd.mm.yyyy").format(cal.getTime());
-                dateOfBirthInfo.setText(format);
+                SimpleDateFormat format = new SimpleDateFormat( "MM-dd-yyyy");
+                dateOfBirthInfo.setText(format.format(cal.getTime()));
 
                 ageRestrictionCalculator(cal.getTimeInMillis());
             }
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         if(!signUpFullName.contains(" ")){
-            name.setError("Your fullname should have a space in between");
+            name.setError("First and Lastname should have a space in between");
             return false;
         }
         return true;
@@ -134,11 +137,11 @@ public class MainActivity extends AppCompatActivity {
         String usernameInput = username.getText().toString().trim();
 
         if (usernameInput.isEmpty()) {
-            username.setError("UserName can't be empty. Please add it");
+            username.setError("Username can't be empty. Please add it");
             return false;
         }
         if (usernameInput.length() > 60) {
-            username.setError("Your UserName is to long!");
+            username.setError("Your Username is to long!");
         }
         return true;
     }
