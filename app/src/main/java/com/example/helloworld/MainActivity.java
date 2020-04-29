@@ -15,8 +15,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -28,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText name;
     private EditText email;
     private EditText username;
-    private ImageButton dateOfBirth;
 
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -70,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLUE));
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
                 datePickerDialog.show();
             }
         });

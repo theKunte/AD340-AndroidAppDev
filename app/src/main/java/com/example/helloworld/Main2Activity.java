@@ -46,19 +46,19 @@ public class Main2Activity extends AppCompatActivity {
 
         userInfo.append("Your Name: \t" + name).append("\n");
             Log.i(TAG, new StringBuilder().append(name).toString());
-        userGreet.append(name);
+        userGreet.append(username);
         // append values
-        userInfo.append("Your Username: \t\t" + username).append("\n");
+        userInfo.append("Your Username: \t" + username).append("\n");
             Log.i(TAG, new StringBuilder().append(username).toString());
 
 
 
-        // display userInfo and userGreet on textviews
+        // shows userInfo and userGreet
         signUpInfo.setText(userInfo);
         welcomeSecondView.setText(userGreet + "!");
 
 
-        // SIGN OUT Button
+        // sign Out Button
         buttonSecondView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -13,19 +13,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+
+public class Main2ActivityTest {
     @Rule
-    public ActivityScenarioRule<MainActivity> activityScenarioRule
-            = new ActivityScenarioRule<>(MainActivity.class);
+    public ActivityScenarioRule<Main2Activity> activityScenarioRule
+            = new ActivityScenarioRule<>(Main2Activity.class);
 
     @Test
-    public void hasTextOnScreen(){
-        onView(withId(R.id.title))
-                .check(matches(withText(R.string.AssignmentTwo)));
-    }
-    @Test
-    public void hasSignUpButton() {
-        onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
+    public void hasWelcomeMsgScreen() {
+        onView(withId(R.id.welcomeSecondView)).check(matches(withText(R.string.welcome_second_Activity)));
     }
 
 }
