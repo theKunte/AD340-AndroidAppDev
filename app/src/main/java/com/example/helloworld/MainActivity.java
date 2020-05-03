@@ -163,6 +163,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         Log.i(TAG, "onStart()");
+        name.setText("");
+        email.setText("");
+        username.setText("");
+        dateOfBirthInfo.setText("");
+
+        name.requestFocus();
     }
 
     @Override
@@ -175,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        Log.i(TAG, "onResume()");
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -26,6 +27,18 @@ public class MainActivityTest {
     @Test
     public void hasSignUpButton() {
         onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
+    }
+    @Test
+    public void hasNameHintDisplay(){
+        onView(withId(R.id.name)).check(matches(withHint("Full Name")));
+    }
+    @Test
+    public void hasUsernameHintDisplay(){
+        onView(withId(R.id.username)).check(matches(withHint("UserName")));
+    }
+    @Test
+    public void hasEmailHintDisplay(){
+        onView(withId(R.id.email)).check(matches(withHint("Email")));
     }
 
 }
