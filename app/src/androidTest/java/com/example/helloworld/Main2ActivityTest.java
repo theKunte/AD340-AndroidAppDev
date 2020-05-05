@@ -23,5 +23,10 @@ public class Main2ActivityTest {
 //    public void hasWelcomeMsgScreen() {
 //        onView(withId(R.id.welcomeSecondView)).check(matches(withText(R.string.welcome_second_Activity)));
 //    }
+    @Test
+    public void hasTextOnScreen(){
+        onView(withId(R.id.welcomeSecondView))
+            .check(matches(withText(R.string.welcome_second_Activity)));
+    }
 
 }
