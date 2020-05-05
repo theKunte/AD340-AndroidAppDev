@@ -19,15 +19,15 @@ public class MainActivityTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule
             = new ActivityScenarioRule<>(MainActivity.class);
 
-    @Test
-    public void hasTextOnScreen(){
-        onView(withId(R.id.title))
-                .check(matches(withText(R.string.AssignmentTwo)));
-    }
-    @Test
-    public void hasSignUpButton() {
-        onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
-    }
+//    @Test
+//    public void hasTextOnScreen(){
+//        onView(withId(R.id.title))
+//                .check(matches(withText(R.string.AssignmentTwo)));
+//    }
+//    @Test
+//    public void hasSignUpButton() {
+//        onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
+//    }
 //    @Test
 //    public void hasNameHintDisplay(){
 //        onView(withId(R.id.name)).check(matches(withHint("Full Name")));
