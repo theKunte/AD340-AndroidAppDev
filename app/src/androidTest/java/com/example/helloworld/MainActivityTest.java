@@ -28,17 +28,17 @@ public class MainActivityTest {
     public void hasSignUpButton() {
         onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
     }
-    @Test
-    public void hasNameHintDisplay(){
-        onView(withId(R.id.name)).check(matches(withHint("Full Name")));
-    }
-    @Test
-    public void hasUsernameHintDisplay(){
-        onView(withId(R.id.username)).check(matches(withHint("UserName")));
-    }
-    @Test
-    public void hasEmailHintDisplay(){
-        onView(withId(R.id.email)).check(matches(withHint("Email")));
-    }
+//    @Test
+//    public void hasNameHintDisplay(){
+//        onView(withId(R.id.name)).check(matches(withHint("Full Name")));
+//    }
+//    @Test
+//    public void hasUsernameHintDisplay(){
+//        onView(withId(R.id.username)).check(matches(withHint("UserName")));
+//    }
+//    @Test
+//    public void hasEmailHintDisplay(){
+//        onView(withId(R.id.email)).check(matches(withHint("Email")));
+//    }
 
 }
