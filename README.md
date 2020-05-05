@@ -1,1 +1,2 @@
 [![CircleCi](https://circleci.com/gh/theKunte/AD340-AndroidAppDev.svg?style=svg)](https://app.circleci.com/pipelines/github/theKunte/AD340-AndroidAppDev)
+[![codecov](https://codecov.io/gh/theKunte/AD340-AndroidAppDev/branch/master/graph/badge.svg)](https://codecov.io/gh/theKunte/AD340-AndroidAppDev)
