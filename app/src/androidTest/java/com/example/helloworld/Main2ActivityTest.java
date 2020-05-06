@@ -19,11 +19,7 @@ public class Main2ActivityTest {
     @Rule
     public ActivityScenarioRule<Main2Activity> activityScenarioRule
             = new ActivityScenarioRule<>(Main2Activity.class);
-//
-//    @Test
-//    public void hasWelcomeMsgScreen() {
-//        onView(withId(R.id.welcomeSecondView)).check(matches(withText(R.string.welcome_second_Activity)));
-//    }
+
     @Test
     public void hasTextOnScreen(){
         onView(withId(R.id.welcomeSecondView))

@@ -13,4 +13,8 @@
     <string name="AssignmentTwo">Kunte, Jenny 04-25-2020</string>
     <string name="birth_mm_dd_yyyy">birth_mm_dd_yyyy</string>
     <string name="welcome_second_Activity">Welcome!</string>
+    <string name="occupationHint">Occupation</string>
+    <string name="Occupation">Occupation</string>
+    <string name="description">Description</string>
+    <string name="assignmentThree">Kunte, Jenny 05-03-2020</string>
 </resources>

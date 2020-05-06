@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText name;
     private EditText email;
     private EditText username;
+    private EditText description;
+    private EditText occupation;
 
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         dateOfBirthInfo = findViewById(R.id.dateOfBirthInfo);
         dateOfBirthInfo.setText("Select Date Of Birth On Calendar:");
+        description = findViewById(R.id.description);
+        occupation = findViewById(R.id.occupation);
 
         Button signUpButton = findViewById(R.id.signUpButton);
         ImageButton dateOfBirth = findViewById(R.id.dateOfBirth);
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 if (validateName(name) && validateUsername(username) && validateEmail(email)) {
                     intent.putExtra("name", name.getText().toString());
                     intent.putExtra("username", username.getText().toString());
+                    intent.putExtra("Age", dateOfBirthInfo.getText().toString());
+                    intent.putExtra("occupation", occupation.getText().toString());
+                    intent.putExtra("description", description.getText().toString());
 
                     startActivity(intent);
                 }
@@ -158,6 +165,20 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+    //Validate Occupation
+    boolean  validateOccupation(EditText occupation) {
+        String occupationInput = occupation.getText().toString().trim();
+
+        if (occupationInput.isEmpty()) {
+            occupation.setError("Occupation can't be empty. Please add it");
+            return false;
+        }
+        if (occupationInput.length() > 50) {
+            occupation.setError("Your Occupation is to long, find a new title!");
+        }
+        return true;
+    }
+
 
     @Override
     protected void onStart(){
@@ -167,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
         email.setText("");
         username.setText("");
         dateOfBirthInfo.setText("");
+        occupation.setText("");
+        description.setText("");
 
         name.requestFocus();
     }
@@ -174,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstaneState) {
         super.onRestoreInstanceState(savedInstaneState);
-        Log.i(TAG, "onRestoreInstanceState()");
+
 
     }
 

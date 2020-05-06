@@ -6,103 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-        tools:context=".MainActivity"
-        android:gravity="center">
-
         <LinearLayout
-            android:id="@+id/secondLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/title"
-                android:padding="@dimen/padding15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin20"
-                android:text="@string/AssignmentTwo"
-                android:textSize="@dimen/textSize18" />
-
-            <EditText
-                android:id="@+id/name"
-                android:layout_marginTop="@dimen/marginTop"
-                android:padding="@dimen/padding15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:hint="@string/name"
-                android:inputType="textPersonName"
-                android:textSize="@dimen/textSize18"
-                android:autofillHints="@string/name" />
-
-            <EditText
-                android:id="@+id/email"
-                android:padding="@dimen/padding15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:textSize="@dimen/textSize18"
-                android:autofillHints="@string/email" />
-
-            <EditText
-                android:id="@+id/username"
-                android:padding="@dimen/padding15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:hint="@string/username"
-                android:inputType="textPersonName"
-                android:textSize="@dimen/textSize18"
-                android:autofillHints="@string/username" />
-
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/primary_text_dark_nodisable"
+            android:gravity="center"
+            tools:context=".MainActivity">
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:id="@+id/secondLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/dateOfBirthInfo"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_weight="5.5"
-                    android:textSize="@dimen/textSize18" />
-
-                <ImageButton
-                    android:id="@+id/dateOfBirth"
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:background="@color/backgroundCal"
-                    app:srcCompat="@android:drawable/ic_menu_my_calendar"
-                    tools:ignore="ContentDescription" />
+                    android:layout_marginBottom="@dimen/margin20"
+                    android:padding="@dimen/padding15"
+                    android:text="@string/assignmentThree"
+                    android:textSize="@dimen/textSize18" />
 
-            </LinearLayout>
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginTop"
+                    android:autofillHints="@string/name"
+                    android:ems="20"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/padding15"
+                    android:textSize="@dimen/textSize18" />
 
-            <Button
-                android:id="@+id/signUpButton"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dim30"
-                android:layout_marginTop="@dimen/margin16"
-                android:background="@color/SignUpButton"
-                android:text="@string/SignUpButton"
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/email"
+                    android:ems="20"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/padding15"
+                    android:textSize="@dimen/textSize18" />
+
+                <EditText
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/username"
+                android:ems="20"
+                android:hint="@string/username"
+                android:inputType="textPersonName"
+                android:padding="@dimen/padding15"
                 android:textSize="@dimen/textSize18" />
 
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/dateOfBirthInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/padding15"
+                        android:layout_weight="10"
+                        android:hint="Birthday"
+                        android:ems="12"
+                        android:textSize="@dimen/textSize18" />
+
+                    <ImageButton
+                        android:id="@+id/dateOfBirth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="@color/backgroundCal"
+                        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+                        tools:ignore="ContentDescription" />
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/occupation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/occupationHint"
+                    android:ems="20"
+                    android:hint="@string/Occupation"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/padding15"
+                    android:textSize="@dimen/textSize18" />
+
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="20"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/padding15"
+                    android:textSize="@dimen/textSize18"
+                    android:hint="@string/description"
+
+                    />
+
+
+                <Button
+                    android:id="@+id/signUpButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim30"
+                    android:layout_marginTop="@dimen/margin16"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
+                    android:text="@string/SignUpButton"
+                    android:textSize="@dimen/textSize18" />
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
