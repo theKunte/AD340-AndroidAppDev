@@ -165,20 +165,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-    //Validate Occupation
-    boolean  validateOccupation(EditText occupation) {
-        String occupationInput = occupation.getText().toString().trim();
-
-        if (occupationInput.isEmpty()) {
-            occupation.setError("Occupation can't be empty. Please add it");
-            return false;
-        }
-        if (occupationInput.length() > 50) {
-            occupation.setError("Your Occupation is to long, find a new title!");
-        }
-        return true;
-    }
-
 
     @Override
     protected void onStart(){
@@ -195,10 +181,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstaneState) {
-        super.onRestoreInstanceState(savedInstaneState);
-
-
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if(savedInstanceState.containsKey(Constants.KEY_NAME)) {
+            name.setText((String) savedInstanceState.get(Constants.KEY_NAME));
+        }
+        if(savedInstanceState.containsKey(Constants.KEY_EMAIL)) {
+            email.setText((String) savedInstanceState.get(Constants.KEY_EMAIL));
+        }
+        if(savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
+            username.setText( (String) savedInstanceState.get(Constants.KEY_USERNAME));
+        }
     }
 
     @Override
@@ -215,9 +208,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState){
         super.onSaveInstanceState(outState);
-        Log.i(TAG, "onSaveInstanceState()");
-
+        outState.putString(Constants.KEY_NAME, name.getText().toString());
+        outState.putString(Constants.KEY_EMAIL, email.getText().toString());
+        outState.putString(Constants.KEY_USERNAME, username.getText().toString());
     }
+
     @Override
     protected void onStop(){
         super.onStop();
