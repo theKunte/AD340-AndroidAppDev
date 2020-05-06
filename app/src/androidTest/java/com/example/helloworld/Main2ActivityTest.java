@@ -22,7 +22,7 @@ public class Main2ActivityTest {
 
     @Test
     public void hasTextOnScreen(){
-        onView(withId(R.id.welcomeSecondView))
+        onView(withId(R.id.buttonSecondView))
             .check(matches(isDisplayed()));
     }
 
