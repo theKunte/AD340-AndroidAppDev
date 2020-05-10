@@ -9,13 +9,13 @@
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="select_your_date_of_birth">Date of Birth</string>
-    <string name="SignUpButton">Sign Up!</string>
+    <string name="signUpButton">Sign Up!</string>
     <string name="AssignmentTwo">Kunte, Jenny 04-25-2020</string>
     <string name="birth_mm_dd_yyyy">birth_mm_dd_yyyy</string>
     <string name="welcome_second_Activity">Welcome!</string>
     <string name="occupationHint">Occupation</string>
     <string name="Occupation">Occupation</string>
     <string name="description">Description</string>
-    <string name="AssignmentThree">Kunte, Jenny 05-03-2020</string>
+    <string name="assignmentThree">Kunte, Jenny 05-03-2020</string>
     <string name="go_back_second">Go back!</string>
 </resources>

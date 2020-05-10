@@ -30,7 +30,7 @@
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle_border"
-                app:srcCompat="@drawable/loveLogo">
+                app:srcCompat="@drawable/logo">
             </ImageView>
 
        </RelativeLayout>
@@ -160,7 +160,7 @@
                     android:layout_height="@dimen/dim30"
                     android:layout_marginTop="@dimen/margin16"
                     android:background="@color/matchesBg"
-                    android:text="@string/SignUpButton"
+                    android:text="@string/signUpButton"
                     android:textSize="@dimen/textSize18" />
 
                 <TextView
