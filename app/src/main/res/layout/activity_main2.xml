@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
             android:background="@drawable/circle_border"
-            app:srcCompat="@drawable/PCRxFiEt_400x400"
+            app:srcCompat="@drawable/lisa"
             >
         </ImageView>
 

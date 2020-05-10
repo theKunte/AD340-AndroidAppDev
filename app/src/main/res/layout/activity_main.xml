@@ -30,7 +30,7 @@
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle_border"
-                app:srcCompat="@drawable/LoveCapture">
+                app:srcCompat="@drawable/loveLogo">
             </ImageView>
 
        </RelativeLayout>
