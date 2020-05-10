@@ -159,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim30"
                     android:layout_marginTop="@dimen/margin16"
-                    android:background="@color/matchesBg"
+                    android:background="@color/colorPrimary"
                     android:text="@string/signUpButton"
                     android:textSize="@dimen/textSize18" />
 
