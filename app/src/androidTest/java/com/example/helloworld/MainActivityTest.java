@@ -29,44 +29,7 @@ public class MainActivityTest {
     @Test
     public void hasTextOnScreen(){
         onView(withId(R.id.title))
-                .check(matches(withText(R.string.AssignmentTwo)));
-    }
-    @Test
-    public void hasValidFullname() {
-        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-        onView(withId(R.id.name)).check(matches(withText(Constants.TEST_KEY_NAME)));
-    }
-    @Test
-    public void hasValidEmail() {
-        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.email)).check(matches(withText(Constants.TEST_KEY_EMAIL)));
-    }
-    @Test
-    public void hasNoEmail() {
-        onView(withId(R.id.email)).perform(clearText());
-        closeSoftKeyboard();
-        onView(withId(R.id.signUpButton)).perform(click());
-    }
-//    @Test
-//    public void hasValidUsername() {
-//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-//        onView(withId(R.id.username)).check(matches(withText(Constants.TEST_KEY_USERNAME)));
-//    }
-    @Test
-    public void hasSignUpButton() {
-        onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
-    }
-//    @Test
-//    public void hasNameHintDisplay(){
-//        onView(withId(R.id.name)).check(matches(withHint("Full Name")));
-//    }
-//    @Test
-//    public void hasUsernameHintDisplay(){
-//        onView(withId(R.id.username)).check(matches(withHint("UserName")));
-//    }
-//    @Test
-//    public void hasEmailHintDisplay(){
-//        onView(withId(R.id.email)).check(matches(withHint("Email")));
-//    }
+                .check(matches(withText(R.string.AssignmentThree)));
 
+    }
 }

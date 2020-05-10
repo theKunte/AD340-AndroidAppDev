@@ -14,7 +14,6 @@
     <dimen name="textSize18">18sp</dimen>
     <dimen name="margin16">16dp</dimen>
     <dimen name="margin">24dp</dimen>
-    <dimen name="textSize20">20sp</dimen>
     <dimen name="padding15">15dp</dimen>
     <dimen name="margin8">10dp</dimen>
     <dimen name="margin20">20dp</dimen>
