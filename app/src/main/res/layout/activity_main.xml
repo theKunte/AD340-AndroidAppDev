@@ -1,131 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/RomantcBackground"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            tools:context=".MainActivity">
+    <RelativeLayout
+        android:id="@+id/logo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gradStart">
 
+        <RelativeLayout
+            android:id="@+id/profileLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding15"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle">
+
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_margin="9dp"
+                android:padding="3dp"
+                android:scaleType="centerInside"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:background="@drawable/circle_border"
+                app:srcCompat="@drawable/LoveCapture">
+            </ImageView>
+
+       </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/sign_up_Info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo_layout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/secondLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dim_10"
+                android:layout_marginLeft="@dimen/dim30"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/dim30">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin20"
-                    android:padding="@dimen/padding15"
-                    android:text="@string/assignmentThree"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="@dimen/textSize18" />
-
 
                 <EditText
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginTop"
-                    android:autofillHints="@string/name"
-                    android:ems="20"
                     android:hint="@string/name"
                     android:inputType="textPersonName"
-                    android:textColorHint="@android:color/darker_gray"
-                    android:padding="@dimen/padding15"
-                    android:textSize="@dimen/textSize18" />
+                    android:textColor="@color/black"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dim_10"
+                    android:background="@color/grey">
+                </View>
 
                 <EditText
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:autofillHints="@string/email"
-                    android:ems="20"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="@android:color/darker_gray"
-                    android:padding="@dimen/padding15"
-                    android:textSize="@dimen/textSize18" />
+                    android:textColor="@color/headings"
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dim_10"
+                    android:background="@color/grey"/>
 
                 <EditText
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autofillHints="@string/username"
-                android:ems="20"
-                android:hint="@string/username"
-                android:inputType="textPersonName"
-                android:padding="@dimen/padding15"
-                android:textSize="@dimen/textSize18"
-                    android:textColorHint="@android:color/darker_gray"/>
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/headings"
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dim_10"
+                    android:background="@color/grey"/>
 
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/dateOfBirthInfo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="@dimen/padding15"
-                        android:layout_weight="10"
-                        android:hint="Birthday"
-                        android:ems="12"
-                        android:textSize="@dimen/textSize18"
-                        android:textColorHint="@android:color/darker_gray"/>
-
-                    <ImageButton
-                        android:id="@+id/dateOfBirth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:background="@color/backgroundCal"
-                        app:srcCompat="@android:drawable/ic_menu_my_calendar"
-                        tools:ignore="ContentDescription"
-                        />
-
-
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/dateOfBirthInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Birthday"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/headings"
+                    />
+                <ImageButton
+                    android:id="@+id/dateOfBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@color/backgroundCal"
+                    app:srcCompat="@android:drawable/ic_menu_my_calendar"
+                    tools:ignore="ContentDescription"
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dim_10"
+                    android:background="@color/grey"/>
 
                 <EditText
                     android:id="@+id/occupation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:autofillHints="@string/occupationHint"
-                    android:ems="20"
-                    android:hint="@string/Occupation"
+                    android:hint="@string/occupationHint"
                     android:inputType="textPersonName"
-                    android:padding="@dimen/padding15"
-                    android:textSize="@dimen/textSize18"
-                    android:textColorHint="@android:color/darker_gray"/>
+                    android:textColor="@color/headings"
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dim_10"
+                    android:background="@color/grey"/>
 
                 <EditText
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="20"
-                    android:inputType="textPersonName"
-                    android:padding="@dimen/padding15"
-                    android:textSize="@dimen/textSize18"
                     android:hint="@string/description"
-                    android:textColorHint="@android:color/darker_gray"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/headings"
                     />
-
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dim_10"
+                    android:background="@color/grey"/>
 
                 <Button
                     android:id="@+id/signUpButton"
@@ -136,8 +163,15 @@
                     android:text="@string/SignUpButton"
                     android:textSize="@dimen/textSize18" />
 
+
+
+
             </LinearLayout>
 
-        </LinearLayout>
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
+
+

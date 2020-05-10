@@ -46,8 +46,6 @@
             android:textSize="@dimen/dim30"
             android:text="FullName:"
             android:textColor="@android:color/white" />
-
-
         <TextView
             android:id="@+id/tv_age"
             android:layout_width="wrap_content"
@@ -153,7 +151,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dim_10"
         android:layout_marginLeft="@dimen/dim30"
-
         android:orientation="vertical"
         android:layout_margin="@dimen/dim30">
 
@@ -223,9 +220,7 @@
 
             </LinearLayout>
 
-    </LinearLayout>
-
-
+        </LinearLayout>
 
     </RelativeLayout>
 
