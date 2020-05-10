@@ -29,7 +29,7 @@ public class MainActivityTest {
     @Test
     public void hasTextOnScreen(){
         onView(withId(R.id.title))
-                .check(matches(withText(R.string.AssignmentThree)));
+                .check(matches(withText(R.string.assignmentThree)));
 
     }
 }

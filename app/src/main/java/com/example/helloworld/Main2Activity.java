@@ -63,11 +63,11 @@ public class Main2Activity extends AppCompatActivity {
         // append values
         display_name.append(name).append("\n");
             Log.i(TAG, new StringBuilder().append(username).toString());
-        display_occupation.append("Occupation: \t" + occupation).append("\n");
+        display_occupation.append(occupation).append("\n");
         Log.i(TAG, new StringBuilder().append(name).toString());
         userGreet.append(username);
         // append values
-        display_description.append("Description: \t" + description).append("\n");
+        display_description.append( description).append("\n");
         Log.i(TAG, new StringBuilder().append(description).toString());
 
 
