@@ -13,8 +13,13 @@ public class Main2Activity extends AppCompatActivity {
 
     private static final String TAG = Main2Activity.class.getSimpleName();
     //local variable
-    TextView signUpInfo;
-   // TextView welcomeSecondView;
+    TextView tv_name;
+    TextView tv_age;
+    TextView tv_occupation;
+    TextView tv_description;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +27,18 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
       //  welcomeSecondView = findViewById(R.id.welcomeSecondView);
-        signUpInfo = findViewById(R.id.signUpInfo);
+        tv_name = findViewById(R.id.tv_name);
+        tv_age = findViewById(R.id.tv_age);
+        tv_occupation = findViewById(R.id.tv_occupation);
+        tv_description = findViewById(R.id.tv_description);
 
         Button buttonSecondView = findViewById(R.id.buttonSecondView);
 
-        // StringBuilder to display userInfo
-        StringBuilder userInfo = new StringBuilder();
+        // StringBuilder to display SignUp Information
+        StringBuilder display_name = new StringBuilder("");
+        StringBuilder display_age = new StringBuilder("");
+        StringBuilder display_occupation = new StringBuilder("");
+        StringBuilder display_description = new StringBuilder("");
 
         // StringBuilder to display userGreet
         StringBuilder userGreet = new StringBuilder("Thanks for Signing Up! ");
@@ -49,23 +60,23 @@ public class Main2Activity extends AppCompatActivity {
 
         }
 
-        userInfo.append("Name: \t" + name).append("\n");
-            Log.i(TAG, new StringBuilder().append(name).toString());
-        userGreet.append(username);
         // append values
-        userInfo.append("Username: \t" + username).append("\n");
+        display_name.append(name).append("\n");
             Log.i(TAG, new StringBuilder().append(username).toString());
-        userInfo.append("Occupation: \t" + occupation).append("\n");
+        display_occupation.append("Occupation: \t" + occupation).append("\n");
         Log.i(TAG, new StringBuilder().append(name).toString());
         userGreet.append(username);
         // append values
-        userInfo.append("Description: \t" + description).append("\n");
+        display_description.append("Description: \t" + description).append("\n");
         Log.i(TAG, new StringBuilder().append(description).toString());
 
 
 
         // shows userInfo and userGreet
-        signUpInfo.setText(userInfo);
+        tv_name.setText(display_name);
+      //  tv_age.setText(display_age);
+        tv_occupation.setText(display_occupation);
+        tv_description.setText(display_description);
        // welcomeSecondView.setText(userGreet + "!");
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6290EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#49BEFF</color>
+    <color name="colorPrimaryDark">#65DCE5</color>
     <color name="colorAccent">#8DF3E9</color>
     <color name="background_color">#6C96F877</color>
     <color name="text_color_name">#DCCC41</color>
@@ -11,4 +11,18 @@
     <color name="SignUpButton">#08969C</color>
     <color name="dateOfBirthButton">#006064</color>
     <color name="backgroundCal">#01579B</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="matches">#0D5D98</color>
+    <color name="matchesBg">#65DCE5</color>
+    <color name="black">#000000</color>
+    <color name="likeBg">#49BEFF</color>
+    <color name="headings">#3797CF</color>
+    <color name="gradEnd">#67EFC8</color>
+    <color name="gradStart">#63C9FF</color>
+    <color name="grey">#E5E5E5</color>
+
+    <color name="white">#FFFFF</color>
+
+
 </resources>

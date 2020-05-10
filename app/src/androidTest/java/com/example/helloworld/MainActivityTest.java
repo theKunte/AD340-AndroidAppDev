@@ -47,15 +47,15 @@ public class MainActivityTest {
         closeSoftKeyboard();
         onView(withId(R.id.signUpButton)).perform(click());
     }
-    @Test
-    public void hasValidUsername() {
-        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.username)).check(matches(withText(Constants.TEST_KEY_USERNAME)));
-    }
 //    @Test
-//    public void hasSignUpButton() {
-//        onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
+//    public void hasValidUsername() {
+//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+//        onView(withId(R.id.username)).check(matches(withText(Constants.TEST_KEY_USERNAME)));
 //    }
+    @Test
+    public void hasSignUpButton() {
+        onView(withId(R.id.signUpButton)).check(matches(withText(R.string.SignUpButton)));
+    }
 //    @Test
 //    public void hasNameHintDisplay(){
 //        onView(withId(R.id.name)).check(matches(withHint("Full Name")));

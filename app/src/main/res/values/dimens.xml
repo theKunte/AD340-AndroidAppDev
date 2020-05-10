@@ -25,4 +25,9 @@
     <dimen name="SecondWelcomeTopMa">108dp</dimen>
     <dimen name="textSizeWelcome">26sp</dimen>
     <dimen name="secButtonMarg">172dp</dimen>
+    <dimen name="dim_10">10dp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="dimTop5">5dp</dimen>
+    <dimen name="dimText30">30sp</dimen>
+    <dimen name="dimText20">20sp</dimen>
 </resources>
