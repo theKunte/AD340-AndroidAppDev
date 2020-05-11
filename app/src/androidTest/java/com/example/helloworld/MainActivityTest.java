@@ -39,15 +39,15 @@ import androidx.test.rule.ActivityTestRule;
                 .check(matches(withText(R.string.assignmentThree)));
 
     }
-    @Test
-    public void validatesEmptyName() {
-        onView(withId(R.id.name)).perform(typeText(""), closeSoftKeyboard());
-        onView(withId(R.id.signUpButton)).perform(scrollTo(),(click()));
-
-        MainActivity activity = activityTestRule.getActivity();
-        onView(withText("Hi! enter your Full Name please!")).
-                inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).
-                check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void validatesEmptyName() {
+//        onView(withId(R.id.name)).perform(typeText(""), closeSoftKeyboard());
+//        onView(withId(R.id.signUpButton)).perform(scrollTo(),(click()));
+//
+//        MainActivity activity = activityTestRule.getActivity();
+//        onView(withText("Hi! enter your Full Name please!")).
+//                inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).
+//                check(matches(isDisplayed()));
+//    }
 
 }
