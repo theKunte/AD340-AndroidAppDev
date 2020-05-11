@@ -49,5 +49,5 @@ import androidx.test.rule.ActivityTestRule;
                 inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).
                 check(matches(isDisplayed()));
     }
-    
+
 }
