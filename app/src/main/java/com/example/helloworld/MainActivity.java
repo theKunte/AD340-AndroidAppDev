@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 datePickerDialog.show();
             }
         });
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         if (age < 18) {
-            dateOfBirthInfo.setError("You have to be 18 years old!.");
+            dateOfBirthInfo.setError("You have to be 18 years old!");
             return false;
         }
         else {
