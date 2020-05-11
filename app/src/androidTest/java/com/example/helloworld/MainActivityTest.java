@@ -13,6 +13,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
@@ -41,43 +42,12 @@ import androidx.test.rule.ActivityTestRule;
     @Test
     public void validatesEmptyName() {
         onView(withId(R.id.name)).perform(typeText(""), closeSoftKeyboard());
-        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.signUpButton)).perform(scrollTo(),(click()));
 
         MainActivity activity = activityTestRule.getActivity();
         onView(withText("Hi! enter your Full Name please!")).
                 inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).
                 check(matches(isDisplayed()));
     }
-
-    @Test
-    public void testAgeForSignUp() {
-        onView(withId(R.id.name)).perform(typeText("Jenny"), closeSoftKeyboard());
-        onView(withId(R.id.email)).perform(typeText("j.kunte@gmx.net"), closeSoftKeyboard());
-        onView(withId(R.id.username)).perform(typeText("jennyKey"), closeSoftKeyboard());
-
-        onView(withId(R.id.signUpButton)).perform(click());
-
-        MainActivity activity = activityTestRule.getActivity();
-        onView(withText("You have to be 18 years old!")).
-                inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).
-                check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void validatesEmptyDOB() {
-        onView(withId(R.id.name)).perform(typeText("Jenny"), closeSoftKeyboard());
-        onView(withId(R.id.email)).perform(typeText("jennykunte@gmx.com"), closeSoftKeyboard());
-        onView(withId(R.id.username)).perform(typeText("JeyKey"), closeSoftKeyboard());
-        onView(withId(R.id.occupation)).perform(typeText(String.valueOf("Software Developer")), closeSoftKeyboard());
-        onView(withId(R.id.description)).perform(typeText(String.valueOf("I love Suhsi")), closeSoftKeyboard());
-        onView(withId(R.id.dateOfBirthInfo)).perform(typeText(String.valueOf("")), closeSoftKeyboard());
-
-        onView(withId(R.id.signUpButton)).perform(click());
-
-        MainActivity activity = activityTestRule.getActivity();
-        onView(withText("date of birth is required")).
-                inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).
-                check(matches(isDisplayed()));
-    }
-
+    
 }
