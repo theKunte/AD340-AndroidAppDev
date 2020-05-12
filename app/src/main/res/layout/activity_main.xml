@@ -28,7 +28,7 @@
             android:background="@drawable/circle">
 
             <ImageView
-                android:id="@+id/profilePicture"
+                android:id="@+id/logoImage"
                 android:layout_width="@dimen/pictureWidth120"
                 android:layout_height="@dimen/pictureWidth120"
                 android:layout_margin="@dimen/margin8"
