@@ -29,4 +29,7 @@
     <dimen name="dimTop5">5dp</dimen>
     <dimen name="dimText30">30sp</dimen>
     <dimen name="dimText20">20sp</dimen>
+    <dimen name="layoutHeightDim1">1dp</dimen>
+    <dimen name="pictureWidth120">120dp</dimen>
+    <dimen name="dim1">1dp</dimen>
 </resources>

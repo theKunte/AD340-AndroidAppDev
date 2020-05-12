@@ -29,10 +29,10 @@
 
         <ImageView
             android:id="@+id/profilePicture"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_margin="9dp"
-            android:padding="3dp"
+            android:layout_width="@dimen/pictureWidth120"
+            android:layout_height="@dimen/pictureWidth120"
+            android:layout_margin="@dimen/dim_10"
+            android:padding="@dimen/dimTop5"
             android:scaleType="centerInside"
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
@@ -48,10 +48,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profileLayout"
             android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="@string/fontFamily"
             android:layout_marginTop="@dimen/padding15"
             android:textSize="@dimen/dim30"
-            android:text="FullName:"
+            android:text="@string/fullNameSecond"
             android:textColor="@android:color/white" />
         <TextView
             android:id="@+id/tv_age"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_name"
             android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="@string/fontFamily"
             android:textColor="@android:color/black"
             android:layout_marginTop="@dimen/dim_10"
             android:text="AGE"
@@ -94,17 +94,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Match"
+                    android:text="@string/match"
                     android:textSize="@dimen/dimText30"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@string/fontFamily"
                     android:textColor="@android:color/white"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="number"
+                    android:text="@string/number"
                     android:textSize="@dimen/dimText20"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@string/fontFamily"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
 
@@ -129,17 +129,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Likes"
+                    android:text="@string/likes"
                     android:textSize="@dimen/dim30"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@string/fontFamily"
                     android:textColor="@android:color/white"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Number"
+                    android:text="@string/likesNumber"
                     android:textSize="@dimen/dimText20"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@string/fontFamily"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
 
@@ -177,13 +177,13 @@
                 android:id="@+id/tv_occupation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Student"
+                android:text="@string/studentSecondView"
                 android:textSize="@dimen/dimText20"
                 android:textColor="@color/black"/>
             
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/layoutHeightDim1"
                 android:layout_marginTop="@dimen/dim_10"
                 android:background="@color/grey">
             </View>
@@ -212,7 +212,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/layoutHeightDim1"
                     android:layout_marginTop="@dimen/dim_10"
                     android:background="@color/grey">
 

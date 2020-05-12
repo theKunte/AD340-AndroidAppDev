@@ -18,4 +18,12 @@
     <string name="description">Description</string>
     <string name="assignmentThree">Kunte, Jenny 05-03-2020</string>
     <string name="go_back_second">Go back!</string>
+    <string name="fontFamily">sans-serif-light</string>
+    <string name="fullNameSecond">FullNameSecond:</string>
+    <string name="number">Number</string>
+    <string name="match">Match</string>
+    <string name="likes">Likes</string>
+    <string name="likesNumber">Number</string>
+    <string name="studentSecondView">Student</string>
+    <string name="birthdayHint">Birthday</string>
 </resources>
