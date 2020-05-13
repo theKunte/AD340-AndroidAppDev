@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-        //Validate Name
+    //Validate Name
     boolean validateName(EditText name) {
         String signUpFullName = name.getText().toString().trim();
         if (signUpFullName.isEmpty()) {

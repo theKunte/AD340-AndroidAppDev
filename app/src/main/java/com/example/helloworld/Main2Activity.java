@@ -1,38 +1,62 @@
 package com.example.helloworld;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class Main2Activity extends AppCompatActivity {
 
     private static final String TAG = Main2Activity.class.getSimpleName();
+    public static String POSITION = "POSITION";
+
     //local variable
     TextView tv_name;
     TextView tv_age;
-    TextView tv_occupation;
-    TextView tv_description;
-
-
-
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-      //  welcomeSecondView = findViewById(R.id.welcomeSecondView);
+//        // Set up toolbar
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+
+        Bundle bundle = getIntent().getExtras();
+
+        //Fragments
+        ProfileFragment profileFragment = new ProfileFragment();
+        MatchesFragment matchesFragment = new MatchesFragment();
+        SettingsFragment settingsFragment = new SettingsFragment();
+
+        //pass data to fragments
+        profileFragment.setArguments(bundle);
+        matchesFragment.setArguments(bundle);
+        settingsFragment.setArguments(bundle);
+
+        // Set up viewpager
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager, profileFragment, matchesFragment, settingsFragment);
+
+        // Set up tabs
+        TabLayout tabs = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabs.setupWithViewPager(viewPager);
+
+        //  welcomeSecondView = findViewById(R.id.welcomeSecondView);
         tv_name = findViewById(R.id.tv_name);
         tv_age = findViewById(R.id.tv_age);
-        tv_occupation = findViewById(R.id.tv_occupation);
-        tv_description = findViewById(R.id.tv_description);
-
-        Button buttonSecondView = findViewById(R.id.buttonSecondView);
 
         // StringBuilder to display SignUp Information
         StringBuilder display_name = new StringBuilder("");
@@ -42,8 +66,6 @@ public class Main2Activity extends AppCompatActivity {
 
         // StringBuilder to display userGreet
         StringBuilder userGreet = new StringBuilder("Thanks for Signing Up! ");
-
-        Bundle bundle = getIntent().getExtras();
 
         // empty strings and int
         String name = "";
@@ -62,7 +84,7 @@ public class Main2Activity extends AppCompatActivity {
 
         // append values
         display_name.append(name).append("\n");
-            Log.i(TAG, new StringBuilder().append(username).toString());
+        Log.i(TAG, new StringBuilder().append(username).toString());
         display_occupation.append(occupation).append("\n");
         Log.i(TAG, new StringBuilder().append(name).toString());
         userGreet.append(username);
@@ -74,20 +96,25 @@ public class Main2Activity extends AppCompatActivity {
 
         // shows userInfo and userGreet
         tv_name.setText(display_name);
-      //  tv_age.setText(display_age);
-        tv_occupation.setText(display_occupation);
-        tv_description.setText(display_description);
-       // welcomeSecondView.setText(userGreet + "!");
+        //  tv_age.setText(display_age);
+
+        // welcomeSecondView.setText(userGreet + "!");
 
 
-        // sign Out Button
-        buttonSecondView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent intent = new Intent(Main2Activity.this, MainActivity.class);
-                finish();
-            }
-        });
+
+
+    }
+
+    //Add fragments for each tab
+    private void setupViewPager(ViewPager viewPager, ProfileFragment profile, MatchesFragment matches, SettingsFragment settings) {
+        Activity2FragmentPagerAdapter adapter = new Activity2FragmentPagerAdapter(getSupportFragmentManager());
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction t = manager.beginTransaction();
+
+        adapter.addFragment(profile, "Profile");
+        adapter.addFragment(matches, "Matches");
+        adapter.addFragment(settings, "Settings");
+        viewPager.setAdapter(adapter);
     }
 
     @Override
@@ -129,6 +156,18 @@ public class Main2Activity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         Log.i(TAG, "onDestroy()");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(POSITION, tabLayout.getSelectedTabPosition());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        viewPager.setCurrentItem(savedInstanceState.getInt(POSITION));
     }
 }
 
