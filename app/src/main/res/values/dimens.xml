@@ -15,6 +15,7 @@
     <dimen name="margin16">16dp</dimen>
     <dimen name="margin">24dp</dimen>
     <dimen name="padding15">15dp</dimen>
+    <dimen name="padding20">20dp</dimen>
     <dimen name="margin8">10dp</dimen>
     <dimen name="margin20">20dp</dimen>
     <dimen name="dim30">30dp</dimen>
@@ -37,4 +38,5 @@
     <dimen name="dim9">9dp</dimen>
     <dimen name="height120">120dp</dimen>
     <dimen name="testDim">320dp</dimen>
+    <dimen name="dimProfileInfoFragment">250dp</dimen>
 </resources>

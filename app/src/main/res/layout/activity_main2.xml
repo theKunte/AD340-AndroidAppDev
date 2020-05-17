@@ -12,101 +12,21 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/sliding_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="fixed" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/relativeLayout"
-        app:layout_anchorGravity="bottom|center"
-
-        >
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".Main2Activity">
-
-        <RelativeLayout
-            android:id="@+id/topLayoutRela"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gradStart">
-
-            <RelativeLayout
-                android:id="@+id/profileLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/padding15"
-                android:background="@drawable/circle">
-
-                <ImageView
-                    android:id="@+id/profilePicture"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_margin="9dp"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/circle_border"
-                    android:padding="3dp"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/lisa"></ImageView>
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/profileLayout"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/padding15"
-                android:fontFamily="sans-serif-light"
-                android:text="FullName:"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/dim30" />
-
-            <TextView
-                android:id="@+id/tv_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_name"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/dim_10"
-                android:fontFamily="sans-serif-light"
-                android:text="AGE"
-                android:textAllCaps="true"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/textSize20" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/match_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/topLayoutRela"
-            android:orientation="horizontal">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/sliding_tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabMode="fixed" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+        android:layout_below="@+id/tablayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

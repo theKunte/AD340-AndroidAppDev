@@ -3,6 +3,7 @@ package com.example.helloworld;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private EditText username;
     private EditText description;
     private EditText occupation;
+    private int age;
+    private boolean isOfAge;
 
     DatePickerDialog.OnDateSetListener setListener;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         dateOfBirthInfo.setText("Select Date Of Birth On Calendar:");
         description = findViewById(R.id.description);
         occupation = findViewById(R.id.occupation);
+        isOfAge = false;
 
         Button signUpButton = findViewById(R.id.signUpButton);
         ImageButton dateOfBirth = findViewById(R.id.dateOfBirth);
@@ -55,16 +61,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
 
-                if (validateName(name) && validateUsername(username) && validateEmail(email)) {
-                    intent.putExtra("name", name.getText().toString());
-                    intent.putExtra("username", username.getText().toString());
-                    intent.putExtra("Age", dateOfBirthInfo.getText().toString());
-                    intent.putExtra("occupation", occupation.getText().toString());
-                    intent.putExtra("description", description.getText().toString());
+                if (validateName(name) && validateUsername(username) && validateEmail(email)  && isOfAge) {
+                    intent.putExtra(Constants.KEY_NAME, name.getText().toString());
+                    intent.putExtra(Constants.KEY_USERNAME, username.getText().toString());
+                    intent.putExtra(Constants.KEY_AGE, Integer.toString(age));
+                    intent.putExtra(Constants.KEY_OCCUPATION, occupation.getText().toString());
+                    intent.putExtra(Constants.KEY_DESCRIPTION, description.getText().toString());
 
                     startActivity(intent);
                 }
-
             }
         });
 
@@ -77,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                Objects.requireNonNull(datePickerDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 datePickerDialog.show();
             }
         });
@@ -90,10 +95,10 @@ public class MainActivity extends AppCompatActivity {
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, day);
-                SimpleDateFormat format = new SimpleDateFormat( "MM-dd-yyyy");
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat( "MM-dd-yyyy");
                 dateOfBirthInfo.setText(format.format(cal.getTime()));
 
-                ageRestrictionCalculator(cal.getTimeInMillis());
+                isOfAge = ageRestrictionCalculator(cal.getTimeInMillis());
             }
         };
     }
@@ -122,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         dateOfBirthCal.setTimeInMillis(date);
         Calendar today = Calendar.getInstance();
 
-        int age = today.get(Calendar.YEAR) - dateOfBirthCal.get(Calendar.YEAR);
+        age = today.get(Calendar.YEAR) - dateOfBirthCal.get(Calendar.YEAR);
         String dateOfBirthInfoInput = dateOfBirthInfo.getText().toString().trim();
 
         if (dateOfBirthInfoInput.isEmpty()) {
@@ -211,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(Constants.KEY_NAME, name.getText().toString());
         outState.putString(Constants.KEY_EMAIL, email.getText().toString());
         outState.putString(Constants.KEY_USERNAME, username.getText().toString());
+        outState.putString(Constants.KEY_AGE, Integer.toString(age));
     }
 
     @Override

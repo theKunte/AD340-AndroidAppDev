@@ -1,195 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:id="@+id/logo_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gradStart">
+        tools:context=".MainActivity">
 
         <RelativeLayout
-            android:id="@+id/profileLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding15"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/circle">
-
-            <ImageView
-                android:id="@+id/logoImage"
-                android:layout_width="@dimen/pictureWidth120"
-                android:layout_height="@dimen/pictureWidth120"
-                android:layout_margin="@dimen/margin8"
-                android:padding="@dimen/dimTop5"
-                android:scaleType="centerInside"
-                android:layout_centerHorizontal="true"
-                android:adjustViewBounds="true"
-                android:background="@drawable/circle_border"
-                app:srcCompat="@drawable/logo">
-            </ImageView>
-
-       </RelativeLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/sign_up_Info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo_layout">
-
-        <RelativeLayout
+            android:id="@+id/logo_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/gradStart">
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/profileLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding15"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/circle">
+
+                <ImageView
+                    android:id="@+id/logoImage"
+                    android:layout_width="@dimen/pictureWidth120"
+                    android:layout_height="@dimen/pictureWidth120"
+                    android:layout_margin="@dimen/margin8"
+                    android:padding="@dimen/dimTop5"
+                    android:scaleType="centerInside"
+                    android:layout_centerHorizontal="true"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/circle_border"
+                    app:srcCompat="@drawable/logo"
+                    android:contentDescription="@string/profile_image">
+                </ImageView>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/sign_up_Info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo_layout">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dim_10"
-                android:layout_marginLeft="@dimen/dim30"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/dim30">
+                tools:ignore="UselessParent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/name"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/black"
-                    />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dim1"
-                    android:layout_marginTop="@dimen/dim_10"
-                    android:background="@color/grey">
-                </View>
-
-                <EditText
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/headings"
-                    />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dim1"
-                    android:layout_marginTop="@dimen/dim_10"
-                    android:background="@color/grey"/>
-
-                <EditText
-                    android:id="@+id/username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/username"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/headings"
-                    />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dim1"
-                    android:layout_marginTop="@dimen/dim_10"
-                    android:background="@color/grey"/>
-
-                <EditText
-                    android:id="@+id/dateOfBirthInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/birthdayHint"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/headings"
-                    android:autofillHints="@string/date_of_birth" />
-                <ImageButton
-                    android:id="@+id/dateOfBirth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:background="@color/backgroundCal"
-                    app:srcCompat="@android:drawable/ic_menu_my_calendar"
-                    tools:ignore="ContentDescription"
-                    />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dim1"
-                    android:layout_marginTop="@dimen/dim_10"
-                    android:background="@color/grey"/>
-
-                <EditText
-                    android:id="@+id/occupation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/occupationHint"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/headings"
-                    />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dim1"
-                    android:layout_marginTop="@dimen/dim_10"
-                    android:background="@color/grey"/>
-
-                <EditText
-                    android:id="@+id/description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/description"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/headings"
-                    />
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dim1"
-                    android:layout_marginTop="@dimen/dim_10"
-                    android:background="@color/grey"/>
-
-                <Button
-                    android:id="@+id/signUpButton"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dim30"
-                    android:layout_marginTop="@dimen/margin16"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/signUpButton"
-                    android:textSize="@dimen/textSize18" />
-
-                <TextView
-                    android:id="@+id/title"
-
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dim30"
-                    android:layout_gravity="center"
-                    android:padding="@dimen/padding15"
-                    android:text="@string/assignmentThree"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/textSize18" />
-            </LinearLayout>
+                    android:layout_marginTop="@dimen/dim_10"
+                    android:layout_marginStart="@dimen/dim30"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/dim30"
+                    tools:ignore="UselessParent">
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:ignore="UselessParent">
+
+                        <EditText
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/name"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/black"
+                            android:autofillHints="@string/name" />
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dim1"
+                            android:layout_marginTop="@dimen/dim_10"
+                            android:background="@color/grey">
+                        </View>
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/headings"
+                            android:autofillHints="@string/email" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dim1"
+                            android:layout_marginTop="@dimen/dim_10"
+                            android:background="@color/grey"/>
+
+                        <EditText
+                            android:id="@+id/username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/username"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/headings"
+                            android:autofillHints="@string/username" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dim1"
+                            android:layout_marginTop="@dimen/dim_10"
+                            android:background="@color/grey"/>
+
+                        <EditText
+                            android:id="@+id/occupation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/occupationHint"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/headings"
+                            android:autofillHints="@string/occupation" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dim1"
+                            android:layout_marginTop="@dimen/dim_10"
+                            android:background="@color/grey"/>
+
+                        <EditText
+                            android:id="@+id/description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/description"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/headings"
+                            android:autofillHints="@string/description" />
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dim1"
+                            android:layout_marginTop="@dimen/dim_10"
+                            android:background="@color/grey"/>
+
+                        <ImageButton
+                            android:id="@+id/dateOfBirth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:background="@color/backgroundCal"
+                            app:srcCompat="@android:drawable/ic_menu_my_calendar"
+                            tools:ignore="ContentDescription,RtlHardcoded" />
+
+                        <TextView
+                            android:id="@+id/dateOfBirthInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:autofillHints="@string/date_of_birth"
+                            android:hint="@string/birthdayHint"
+                            android:textColor="@color/headings" />
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dim1"
+                            android:layout_marginTop="@dimen/dim_10"
+                            android:background="@color/grey"/>
+
+                        <Button
+                            android:id="@+id/signUpButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dim30"
+                            android:layout_marginTop="@dimen/margin16"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/signUpButton"
+                            android:textSize="@dimen/textSize18" />
+
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dim30"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/padding15"
+                            android:text="@string/assignment4"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/textSize18" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
     </RelativeLayout>
-
-</RelativeLayout>
 
 </ScrollView>

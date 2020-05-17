@@ -10,13 +10,13 @@
     <string name="username">Username</string>
     <string name="select_your_date_of_birth">Date of Birth</string>
     <string name="signUpButton">Sign Up!</string>
-    <string name="AssignmentTwo">Kunte, Jenny 04-25-2020</string>
+    <string name="AssignmentTwo">Kunte, Jenny 04–25-2020</string>
     <string name="birth_mm_dd_yyyy">birth_mm_dd_yyyy</string>
     <string name="welcome_second_Activity">Welcome!</string>
     <string name="occupationHint">Occupation</string>
     <string name="Occupation">Occupation</string>
     <string name="description">Description</string>
-    <string name="assignmentThree">Kunte, Jenny 05-03-2020</string>
+    <string name="assignmentThree">Kunte, Jenny 05–03–2020</string>
     <string name="go_back_second">Go back!</string>
     <string name="birthdayHint">Birthday</string>
 
@@ -25,4 +25,10 @@
     <string name="ageSecondLayout">AGE</string>
     <string name="fontFamily">sans-serif-light</string>
     <string name="occupation">Student</string>
+    <string name="fullName">FullName:</string>
+    <string name="age">Age</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="matches">Matches</string>
+    <string name="settings">Settings</string>
+    <string name="assignment4">Kunte, Jenny Date: 05.17.2020 Changes</string>
 </resources>

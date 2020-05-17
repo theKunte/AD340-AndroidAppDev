@@ -7,7 +7,7 @@
     tools:context=".ProfileFragment">
 
     <RelativeLayout
-        android:id="@+id/topLayoutRela"
+        android:id="@+id/topLayoutRelative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/gradStart">
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/padding15"
+            android:layout_marginTop="@dimen/padding20"
             android:background="@drawable/circle">
 
             <ImageView
@@ -30,7 +30,8 @@
                 android:background="@drawable/circle_border"
                 android:padding="@dimen/dim3"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/lisa" />
+                app:srcCompat="@drawable/lisa"
+                android:contentDescription="@string/profile_image" />
 
         </RelativeLayout>
 
@@ -42,9 +43,10 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/padding15"
             android:fontFamily="@string/fontFamily"
-            android:text="FullName:"
+            android:text="@string/fullName"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/dim30" />
+            android:textSize="@dimen/dim30"
+            tools:ignore="SpUsage" />
 
         <TextView
             android:id="@+id/tv_age"
@@ -54,7 +56,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dim_10"
             android:fontFamily="@string/fontFamily"
-            android:text="@string/ageSecondLayout"
+            android:text="@string/age"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="@dimen/textSize20" />
@@ -65,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:layout_marginTop="@dimen/testDim"
+        android:layout_marginTop="@dimen/dimProfileInfoFragment"
         >
 
         <LinearLayout
@@ -73,15 +75,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dim_10"
-            android:layout_marginLeft="@dimen/dim30"
+            android:layout_marginStart="@dimen/dim9"
             android:orientation="vertical"
-            android:layout_margin="@dimen/dim30">
+            android:layout_margin="@dimen/dim30"
+            tools:ignore="UselessParent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/topLayoutRela">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -132,15 +134,15 @@
                     android:layout_height="@dimen/dim1"
                     android:layout_marginTop="@dimen/dim_10"
                     android:background="@color/grey">
-
                 </View>
 
                 <Button
                     android:id="@+id/buttonSecondView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/margin20"
-                    android:text="@string/go_back_second" />
+                    android:paddingStart="@dimen/margin20"
+                    android:text="@string/go_back_second"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

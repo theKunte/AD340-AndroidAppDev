@@ -41,7 +41,7 @@ import androidx.test.espresso.NoMatchingViewException;
     @Test
     public void hasTextOnScreen(){
         onView(withId(R.id.title))
-                .check(matches(withText(R.string.assignmentThree)));
+                .check(matches(withText(R.string.assignment4)));
 
     }
 
