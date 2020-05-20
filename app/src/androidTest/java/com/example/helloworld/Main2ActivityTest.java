@@ -20,10 +20,10 @@ public class Main2ActivityTest {
     public ActivityScenarioRule<Main2Activity> activityScenarioRule
             = new ActivityScenarioRule<>(Main2Activity.class);
 
-//    @Test
-//    public void hasTextOnScreen(){
-//        onView(withId(R.id.buttonSecondView))
-//            .check(matches(isDisplayed()));
-//    }
+    @Test
+    public void hasTextOnScreen(){
+        onView(withId(R.id.buttonSecondView))
+            .check(matches(isDisplayed()));
+    }
 
 }
