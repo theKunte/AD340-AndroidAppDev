@@ -47,17 +47,18 @@ public class MatchesFragment extends Fragment {
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of List in RecyclerView.
         private static final int LENGTH = 18;
-        private final String[] mPlaces;
-        private final String[] mPlaceDesc;
-        private final Drawable[] mPlacePictures;
+        private final String[] mMatches;
+        private final String[] mMatchesDesc;
+        private final Drawable[] mMatchesPictures;
+
         public ContentAdapter(Context context) {
             Resources resources = context.getResources();
-            mPlaces = resources.getStringArray(R.array.matches);
-            mPlaceDesc = resources.getStringArray(R.array.match_desc);
+            mMatches = resources.getStringArray(R.array.matches);
+            mMatchesDesc = resources.getStringArray(R.array.match_desc);
             TypedArray a = resources.obtainTypedArray(R.array.match_picture);
-            mPlacePictures = new Drawable[a.length()];
-            for (int i = 0; i < mPlacePictures.length; i++) {
-                mPlacePictures[i] = a.getDrawable(i);
+            mMatchesPictures = new Drawable[a.length()];
+            for (int i = 0; i < mMatchesPictures.length; i++) {
+                mMatchesPictures[i] = a.getDrawable(i);
             }
             a.recycle();
         }
@@ -70,9 +71,9 @@ public class MatchesFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
-            holder.name.setText(mPlaces[position % mPlaces.length]);
-            holder.description.setText(mPlaceDesc[position % mPlaceDesc.length]);
+            holder.picture.setImageDrawable(mMatchesPictures[position % mMatchesPictures.length]);
+            holder.name.setText(mMatches[position % mMatches.length]);
+            holder.description.setText(mMatchesDesc[position % mMatchesDesc.length]);
         }
 
         @Override

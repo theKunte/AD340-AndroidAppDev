@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="matches">
-        <item>Match #1</item>
-        <item>Match #2</item>
-        <item>Match #3</item>
+        <item>Rex of Venbergen</item>
+        <item>Kitten Mautzi</item>
+        <item>Iggy Peck</item>
     </string-array>
     <string-array name="match_desc">
         <item>Likes dogs</item>
@@ -39,12 +39,12 @@
         <item>New York City</item>
     </string-array>
     <array name="match_avator">
-        <item>@drawable/a_avator</item>
-        <item>@drawable/a_avator</item>
-        <item>@drawable/a_avator</item>
+        <item>@drawable/dog1</item>
+        <item>@drawable/cats</item>
+        <item>@drawable/hedghog</item>
     </array>
     <array name="match_picture">
-        <item>@drawable/a</item>
-        <item>@drawable/a</item>
-        <item>@drawable/a</item>
+        <item>@drawable/dog1</item>
+        <item>@drawable/cats</item>
+        <item>@drawable/hedghog</item>
     </array></resources>
