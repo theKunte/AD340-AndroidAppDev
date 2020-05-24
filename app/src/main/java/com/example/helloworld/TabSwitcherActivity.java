@@ -10,10 +10,10 @@ import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class Main2Activity extends AppCompatActivity {
+public class TabSwitcherActivity extends AppCompatActivity {
 
     private FragmentManager manager;
-    private static final String TAG = Main2Activity.class.getSimpleName();
+    private static final String TAG = TabSwitcherActivity.class.getSimpleName();
     public static String POSITION = "POSITION";
 
     //local variable
@@ -68,7 +68,7 @@ public class Main2Activity extends AppCompatActivity {
 
     //Add fragments for each tab
     private void setupViewPager(ViewPager viewPager, ProfileFragment profile, MatchesFragment matches, SettingsFragment settings) {
-        Activity2FragmentPagerAdapter adapter = new Activity2FragmentPagerAdapter(getSupportFragmentManager());
+        ProfileFragmentPagerAdapter adapter = new ProfileFragmentPagerAdapter(getSupportFragmentManager());
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction t = manager.beginTransaction();
 

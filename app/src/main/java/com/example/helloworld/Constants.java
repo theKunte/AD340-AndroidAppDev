@@ -8,7 +8,7 @@ public class Constants {
     static final String KEY_OCCUPATION = "occupation";
     static final String KEY_DESCRIPTION = "description";
 
-    static final String KEY_DateOFBirth = "mm/dd/yyyy";
+    static final String KEY_DateOFBirth = "dateOfBirth";
     static final String KEY_EMPTY = "";
 
     static final String TEST_KEY_NAME = "Jenny Kunte";

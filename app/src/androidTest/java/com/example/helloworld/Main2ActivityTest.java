@@ -17,8 +17,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 public class Main2ActivityTest {
     @Rule
-    public ActivityScenarioRule<Main2Activity> activityScenarioRule
-            = new ActivityScenarioRule<>(Main2Activity.class);
+    public ActivityScenarioRule<TabSwitcherActivity> activityScenarioRule
+            = new ActivityScenarioRule<>(TabSwitcherActivity.class);
 
     @Test
     public void hasTextOnScreen(){

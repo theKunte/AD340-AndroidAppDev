@@ -1,8 +1,5 @@
 package com.example.helloworld;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -18,13 +15,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
 
-public class MainActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private String TAG;
     private TextView dateOfBirthInfo;
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         username = findViewById(R.id.username);
         dateOfBirthInfo = findViewById(R.id.dateOfBirthInfo);
-        dateOfBirthInfo.setText("Select Date Of Birth On Calendar:");
         description = findViewById(R.id.description);
         occupation = findViewById(R.id.occupation);
         isOfAge = false;
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                Intent intent = new Intent(SignUpActivity.this, TabSwitcherActivity.class);
 
                 if (validateName(name) && validateUsername(username) && validateEmail(email)  && isOfAge) {
                     intent.putExtra(Constants.KEY_NAME, name.getText().toString());
@@ -67,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra(Constants.KEY_AGE, Integer.toString(age));
                     intent.putExtra(Constants.KEY_OCCUPATION, occupation.getText().toString());
                     intent.putExtra(Constants.KEY_DESCRIPTION, description.getText().toString());
+                    intent.putExtra(Constants.KEY_DateOFBirth, dateOfBirthInfo.getText().toString());
+
 
                     startActivity(intent);
                 }
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this, setListener, year, month, day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(SignUpActivity.this, setListener, year, month, day);
                 Objects.requireNonNull(datePickerDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 datePickerDialog.show();
             }
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, day);
+
                 @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat( "MM-dd-yyyy");
                 dateOfBirthInfo.setText(format.format(cal.getTime()));
 
@@ -197,6 +199,15 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
             username.setText( (String) savedInstanceState.get(Constants.KEY_USERNAME));
         }
+        if(savedInstanceState.containsKey(Constants.KEY_OCCUPATION)) {
+            occupation.setText( (String) savedInstanceState.get(Constants.KEY_OCCUPATION));
+        }
+        if(savedInstanceState.containsKey(Constants.KEY_DESCRIPTION)) {
+            description.setText( (String) savedInstanceState.get(Constants.KEY_DESCRIPTION));
+        }
+        if(savedInstanceState.containsKey(Constants.KEY_DateOFBirth)) {
+            dateOfBirthInfo.setText((String) savedInstanceState.get(Constants.KEY_DateOFBirth));
+        }
     }
 
     @Override
@@ -217,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(Constants.KEY_EMAIL, email.getText().toString());
         outState.putString(Constants.KEY_USERNAME, username.getText().toString());
         outState.putString(Constants.KEY_AGE, Integer.toString(age));
+        outState.putString(Constants.KEY_DateOFBirth, dateOfBirthInfo.getText().toString());
     }
 
     @Override
