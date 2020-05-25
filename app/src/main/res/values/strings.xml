@@ -32,4 +32,15 @@
     <string name="settings">Settings</string>
     <string name="assignment4">Kunte, Jenny Date: 05.17.2020 Changes</string>
     <string name="assignment5">Kunte, Jenny Date: 05.17.2020</string>
+    <string name="item_lists">Lists</string>
+    <string name="signUpMessage">\"Thanks for Signing Up! \"</string>
+    <string name="pofileFragment">Profile</string>
+    <string name="matchesFragment">Matches</string>
+    <string name="settingsFragment">Settings</string>
+    <string name="position">POSITION</string>
+    <string name="LIKE">LIKE</string>
+    <string name="LikeMsg">You LIKED: </string>
+    <string name="UnlikedMsg">You UNLIKED: </string>
+    <string name="UNLIKE">UNLIKE</string>
+    >
 </resources>

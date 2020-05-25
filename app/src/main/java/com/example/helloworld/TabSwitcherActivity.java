@@ -14,7 +14,6 @@ public class TabSwitcherActivity extends AppCompatActivity {
 
     private FragmentManager manager;
     private static final String TAG = TabSwitcherActivity.class.getSimpleName();
-    public static String POSITION = "POSITION";
 
     //local variable
     TabLayout tabLayout;
@@ -61,7 +60,7 @@ public class TabSwitcherActivity extends AppCompatActivity {
             tabs.setupWithViewPager(viewPager);
 
             // StringBuilder to display userGreet
-            StringBuilder userGreet = new StringBuilder("Thanks for Signing Up! ");
+            StringBuilder userGreet = new StringBuilder(getString(R.string.signUpMessage));
 
         }
     }
@@ -72,9 +71,9 @@ public class TabSwitcherActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction t = manager.beginTransaction();
 
-        adapter.addFragment(profile, "Profile");
-        adapter.addFragment(matches, "Matches");
-        adapter.addFragment(settings, "Settings");
+        adapter.addFragment(profile, getString(R.string.pofileFragment));
+        adapter.addFragment(matches, getString(R.string.matchesFragment));
+        adapter.addFragment(settings, getString(R.string.settingsFragment));
         viewPager.setAdapter(adapter);
     }
 
@@ -122,13 +121,13 @@ public class TabSwitcherActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(POSITION, tabLayout.getSelectedTabPosition());
+        outState.putInt(getString(R.string.position), tabLayout.getSelectedTabPosition());
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        viewPager.setCurrentItem(savedInstanceState.getInt(POSITION));
+        viewPager.setCurrentItem(savedInstanceState.getInt(getString(R.string.position)));
     }
 }
 

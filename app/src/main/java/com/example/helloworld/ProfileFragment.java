@@ -25,10 +25,10 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null)
         {
-            occupation = getArguments().getString("occupation");
-            description = getArguments().getString("description");
-            name = getArguments().getString("name");
-            age = getArguments().getString("age");
+            occupation = getArguments().getString(Constants.KEY_OCCUPATION);
+            description = getArguments().getString(Constants.KEY_DESCRIPTION);
+            name = getArguments().getString(Constants.KEY_NAME);
+            age = getArguments().getString(Constants.KEY_AGE);
         }
     }
 
