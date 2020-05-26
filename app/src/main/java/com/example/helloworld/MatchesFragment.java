@@ -2,6 +2,8 @@ package com.example.helloworld;
 
 import com.example.helloworld.model.Match;
 import com.example.helloworld.viewmodel.FirebaseMatchesViewModel;
+import com.squareup.picasso.Picasso;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -23,16 +25,23 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MatchesFragment extends Fragment {
+FirebaseMatchesViewModel viewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        viewModel = new FirebaseMatchesViewModel();
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), viewModel);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return recyclerView;
+    }
+
+    @Override
+    public void onPause() {
+        viewModel.clear();
+        super.onPause();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -61,19 +70,24 @@ public class MatchesFragment extends Fragment {
             });
         }
     }
+
     /**
      * Adapter to display recycler view.
      */
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-
         // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 18;
+        private int length;
         private ArrayList<Match> matches;
+        private FirebaseMatchesViewModel viewModel;
 
-        public ContentAdapter(Context context) {
-            FirebaseMatchesViewModel viewModel = new FirebaseMatchesViewModel();
-            viewModel.getMatches((matches -> {
-                this.matches = matches;
+        ContentAdapter(Context context, FirebaseMatchesViewModel viewModel) {
+            this.viewModel = viewModel;
+            context.getResources();
+            viewModel = new FirebaseMatchesViewModel();
+            viewModel.getMatches((fb_matches -> {
+                this.matches = fb_matches;
+                length = matches.size();
+                notifyDataSetChanged();
             }));
         }
 
@@ -84,17 +98,17 @@ public class MatchesFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            Match match = matches.get(position % matches.size());
-
-//            holder.picture.setImageDrawable(match.imageUrl);
-            holder.name.setText(match.name);
-//            holder.description.setText(matches[position % len]);
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            if (this.matches != null) {
+                Match match = this.matches.get(position % this.matches.size());
+                Picasso.get().load(match.imageUrl).into(holder.picture);
+                holder.name.setText(match.name);
+            }
         }
 
         @Override
         public int getItemCount() {
-            return LENGTH;
+            return length;
         }
     }
 }
