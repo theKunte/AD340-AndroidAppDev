@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 
+import com.example.helloworld.viewmodel.FirebaseMatchesViewModel;
 import com.google.android.material.tabs.TabLayout;
 
 public class TabSwitcherActivity extends AppCompatActivity {
@@ -18,11 +19,14 @@ public class TabSwitcherActivity extends AppCompatActivity {
     //local variable
     TabLayout tabLayout;
     ViewPager viewPager;
+    FirebaseMatchesViewModel matchesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        matchesViewModel = new FirebaseMatchesViewModel();
 
         Bundle bundle = getIntent().getExtras();
 

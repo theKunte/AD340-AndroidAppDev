@@ -1,17 +1,17 @@
 package com.example.helloworld;
 
+import com.example.helloworld.model.Match;
+import com.example.helloworld.viewmodel.FirebaseMatchesViewModel;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +20,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MatchesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+
         ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         return recyclerView;
     }
 
@@ -43,7 +47,6 @@ public class MatchesFragment extends Fragment {
             picture = (ImageView) itemView.findViewById(R.id.card_image);
             name = (TextView) itemView.findViewById(R.id.card_title);
             description = (TextView) itemView.findViewById(R.id.card_text);
-
             like_btn = itemView.findViewById(R.id.like_btn);
             Context context = itemView.getContext();
 
@@ -56,30 +59,22 @@ public class MatchesFragment extends Fragment {
                     Toast.makeText(itemView.getContext(), context.getString(R.string.UnlikedMsg) + name.getText(), Toast.LENGTH_SHORT).show();
                 }
             });
-
-
         }
     }
     /**
      * Adapter to display recycler view.
      */
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+
         // Set numbers of List in RecyclerView.
         private static final int LENGTH = 18;
-        private final String[] mMatches;
-        private final String[] mMatchesDesc;
-        private final Drawable[] mMatchesPictures;
+        private ArrayList<Match> matches;
 
         public ContentAdapter(Context context) {
-            Resources resources = context.getResources();
-            mMatches = resources.getStringArray(R.array.matches);
-            mMatchesDesc = resources.getStringArray(R.array.match_desc);
-            TypedArray a = resources.obtainTypedArray(R.array.match_picture);
-            mMatchesPictures = new Drawable[a.length()];
-            for (int i = 0; i < mMatchesPictures.length; i++) {
-                mMatchesPictures[i] = a.getDrawable(i);
-            }
-            a.recycle();
+            FirebaseMatchesViewModel viewModel = new FirebaseMatchesViewModel();
+            viewModel.getMatches((matches -> {
+                this.matches = matches;
+            }));
         }
 
         @NonNull
@@ -90,9 +85,11 @@ public class MatchesFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mMatchesPictures[position % mMatchesPictures.length]);
-            holder.name.setText(mMatches[position % mMatches.length]);
-            holder.description.setText(mMatchesDesc[position % mMatchesDesc.length]);
+            Match match = matches.get(position % matches.size());
+
+//            holder.picture.setImageDrawable(match.imageUrl);
+            holder.name.setText(match.name);
+//            holder.description.setText(matches[position % len]);
         }
 
         @Override
