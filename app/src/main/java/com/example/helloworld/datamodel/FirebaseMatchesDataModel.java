@@ -42,14 +42,14 @@ public class FirebaseMatchesDataModel {
     }
 
     public void updateMatchById(Match match) {
-        DocumentReference matchRef = db.collection("matches").document(match.uid);
+        DocumentReference matchRef = db.collection("matches").document(match.getUid());
         Map<String, Object> data = new HashMap<>();
-        data.put("imageUrl", match.imageUrl);
-        data.put("liked", match.liked);
-        data.put("name", match.name);
-        data.put("uid", match.uid);
-        data.put("lat", match.lat);
-        data.put("longitude", match.longitude);
+        data.put("imageUrl", match.getImageUrl());
+        data.put("liked", match.isLiked());
+        data.put("name", match.getName());
+        data.put("uid", match.getUid());
+        data.put("lat", match.getLat());
+        data.put("longitude", match.getLongitude());
 
         matchRef.update(data);
     }

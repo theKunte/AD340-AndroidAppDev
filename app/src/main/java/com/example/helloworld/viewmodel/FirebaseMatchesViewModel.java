@@ -3,7 +3,6 @@ package com.example.helloworld.viewmodel;
 import androidx.core.util.Consumer;
 import com.example.helloworld.datamodel.FirebaseMatchesDataModel;
 import com.example.helloworld.model.Match;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -29,7 +28,7 @@ public class FirebaseMatchesViewModel {
                         for (DocumentSnapshot matchesSnapshot : querySnapshot.getDocuments()) {
                             Match match = matchesSnapshot.toObject(Match.class);
                             assert match != null;
-                            match.uid = matchesSnapshot.getId();
+                            match.setUid(matchesSnapshot.getId());
                             matches.add(match);
                         }
                         responseCallback.accept(matches);
