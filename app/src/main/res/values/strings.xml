@@ -43,5 +43,14 @@
     <string name="UnlikedMsg">You UNLIKED: </string>
     <string name="UNLIKE">UNLIKE</string>
     <string name="assignment6">Kunte Jenny, Date: 05.21.2020</string>
+    <string name="daily_match_reminder">Daily Match Reminder</string>
+    <string name="this_would_be_match_reminder">This would be match reminder</string>
+    <string name="this_would_be_max_distance_in_miles">This would be max distance in Miles</string>
+    <string name="max_distance_search_in_miles_info">Max Distance Search in Miles</string>
+    <string name="age_range">Age Range</string>
+    <string name="hint_type_of_account">Type Of Account</string>
+    <string name="gender_pref_info">Gender Preference</string>
+    <string name="account_type_text">Account Type</string>
+    <string name="assignment7">Kunte Jenny, Date: 05.31.2020</string>
     >
 </resources>
