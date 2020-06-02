@@ -52,5 +52,7 @@
     <string name="gender_pref_info">Gender Preference</string>
     <string name="account_type_text">Account Type</string>
     <string name="assignment7">Kunte Jenny, Date: 05.31.2020</string>
+    <string name="min_age">Min. Age</string>
+    <string name="max_age">Max Age</string>
     >
 </resources>
