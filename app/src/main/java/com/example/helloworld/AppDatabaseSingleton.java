@@ -14,14 +14,14 @@ public class AppDatabaseSingleton {
         if(db == null) {
             db = Room.databaseBuilder(context,
                     AppDatabase.class, "app-database")
-//                    .addMigrations(MIGRATION_2_3)
+                    .fallbackToDestructiveMigration()
                     .build();
         }
 
         return db;
     }
 
-//    private static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+//    private static final Migration CREATE_TABLE = new Migration(0, 3) {
 //        @Override
 //        public void migrate(@NonNull SupportSQLiteDatabase database) {
 //            database.execSQL("ALTER TABLE user ADD COLUMN last_name TEXT");

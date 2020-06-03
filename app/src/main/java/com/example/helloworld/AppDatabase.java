@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
 import com.example.helloworld.dao.SettingsDao;
 import com.example.helloworld.entity.Settings;
 
-@Database(entities = {Settings.class}, version = 1)
+@Database(entities = {Settings.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract SettingsDao settingsDao();
 }

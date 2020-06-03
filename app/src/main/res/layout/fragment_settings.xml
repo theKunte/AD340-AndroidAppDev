@@ -70,14 +70,6 @@
                     android:layout_marginTop="@dimen/dim_10"
                     android:background="@color/grey"/>
 
-                <TextView
-                    android:id="@+id/match_reminder_setting_Id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/daily_match_reminder"
-                    android:textColor="@color/headings"
-                    />
-
                 <EditText
                     android:id="@+id/daily_match_reminder_ID"
                     android:layout_width="wrap_content"
@@ -86,6 +78,16 @@
                     android:textSize="@dimen/dimText20"
                     android:textColor="@color/black"
                     />
+
+                <TimePicker
+                    android:id="@+id/match_reminder_setting_Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numbersBackgroundColor="@color/colorAccent"
+                    android:adjustViewBounds="true"
+                    android:timePickerMode="spinner"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+
 
                 <View
                     android:layout_width="match_parent"
@@ -102,11 +104,10 @@
                     android:textColor="@color/headings"
                     />
 
-                <Spinner
-                    android:id="@+id/distance_spinner_Id"
-                    android:layout_width="@dimen/height120"
-                    android:layout_height="wrap_content"
-                    />
+                <NumberPicker
+                    android:id="@+id/distance_value"
+                    android:layout_width="@dimen/dime_width120"
+                    android:layout_height="@dimen/dim30" />
 
                 <View
                     android:layout_width="match_parent"
@@ -125,7 +126,7 @@
                 <NumberPicker
                     android:id="@+id/min_age_value"
                     android:layout_width="@dimen/dime_width120"
-                    android:layout_height="@dimen/dim30" />
+                    android:layout_height="60dp" />
 
                 <TextView
                     android:id="@+id/max_age_label"
@@ -137,7 +138,7 @@
                 <NumberPicker
                     android:id="@+id/max_age_value"
                     android:layout_width="@dimen/dime_width120"
-                    android:layout_height="@dimen/dim30"/>
+                    android:layout_height="60dp" />
 
                 <View
                     android:layout_width="match_parent"

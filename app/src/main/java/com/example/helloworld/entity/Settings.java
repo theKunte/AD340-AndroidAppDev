@@ -15,8 +15,11 @@ public class Settings {
     @ColumnInfo(name = "private_account")
     private boolean isPrivateAccount;
 
-    @ColumnInfo(name = "reminder_time")
-    private String MatchReminderTime;
+    @ColumnInfo(name = "reminder_hour")
+    private Integer MatchReminderHour;
+
+    @ColumnInfo(name = "reminder_min")
+    private Integer MatchReminderMin;
 
     @ColumnInfo(name = "max_distance")
     private Integer MaxDistance;
@@ -43,14 +46,6 @@ public class Settings {
         isPrivateAccount = privateAccount;
     }
 
-    public String getMatchReminderTime() {
-        return MatchReminderTime;
-    }
-
-    public void setMatchReminderTime(String matchReminderTime) {
-        MatchReminderTime = matchReminderTime;
-    }
-
     public Integer getMaxDistance() {
         return MaxDistance;
     }
@@ -75,4 +70,19 @@ public class Settings {
         MaxAge = maxAge;
     }
 
+    public Integer getMatchReminderHour() {
+        return MatchReminderHour;
+    }
+
+    public void setMatchReminderHour(Integer matchReminderHour) {
+        MatchReminderHour = matchReminderHour;
+    }
+
+    public Integer getMatchReminderMin() {
+        return MatchReminderMin;
+    }
+
+    public void setMatchReminderMin(Integer matchReminderMin) {
+        MatchReminderMin = matchReminderMin;
+    }
 }

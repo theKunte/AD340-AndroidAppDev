@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,23 +22,26 @@ public class SettingsFragment extends Fragment {
 
     private Integer settingsId = 1;
     private SettingsViewModel settingsViewModel;
+    private Settings loadedSettings;
     private NumberPicker minAge;
     private NumberPicker maxAge;
-    private int defaultMinAge = 18;
-    private int defaultMaxAge = 120;
+    private Integer minAgeLimit = 18;
+    private Integer maxAgeLimit = 120;
+    private Integer defaultMinAge = 18;
+    private Integer defaultMaxAge = 120;
 
     public SettingsFragment() {
         // Required empty public constructor
     }
 
-    public static SettingsFragment newInstance() {
-        SettingsFragment fragment = new SettingsFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+//    public static SettingsFragment newInstance() {
+//        SettingsFragment fragment = new SettingsFragment();
+//        Bundle args = new Bundle();
+////        args.putString(ARG_PARAM1, param1);
+////        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,14 +62,25 @@ public class SettingsFragment extends Fragment {
         };
 
         settingsViewModel.loadSettingsById(this.getContext(), 1).observe(this, getSettingsObserver);
+        loadedSettings = settingsViewModel.loadSettingsById(this.getContext(), 1).getValue();
+
+        if (loadedSettings == null){
+            loadedSettings = new Settings();
+            loadedSettings.setId(1);
+            loadedSettings.setMatchReminderHour(14);
+            loadedSettings.setMatchReminderMin(0);
+            loadedSettings.setPrivateAccount(false);
+            loadedSettings.setMaxDistance(5);
+            loadedSettings.setMinAge(18);
+            loadedSettings.setMaxAge(120);
+        }
+
     }
 
     public void updateSettings(View view, Settings settings) {
 
         settingsViewModel.updateSettings(this.getContext(), settings);
-
-        this.minAge.setValue(settings.getMinAge());
-        this.minAge.setValue(settings.getMaxAge());
+        Toast.makeText(view.getContext(), R.string.Updated, Toast.LENGTH_SHORT).show();
     }
 
     public void deleteSettings(View view) {
@@ -78,8 +90,8 @@ public class SettingsFragment extends Fragment {
 
         settingsViewModel.deleteSettings(this.getContext(), currentSettings);
 
-        this.minAge.setValue(this.defaultMinAge);
-        this.maxAge.setValue(this.defaultMaxAge);
+        this.minAge.setValue(this.minAgeLimit);
+        this.maxAge.setValue(this.maxAgeLimit);
         //add other fields
 
     }
@@ -87,35 +99,33 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         this.minAge = view.findViewById(R.id.min_age_value);
-        this.minAge.setMinValue(defaultMinAge);
-        this.minAge.setMaxValue(defaultMaxAge);
-
-        this.maxAge = view.findViewById(R.id.max_age_value);
-        this.maxAge.setMinValue(defaultMinAge);
-        this.maxAge.setMaxValue(defaultMaxAge);
-
+        this.minAge.setMinValue(minAgeLimit);
+        this.minAge.setMaxValue(maxAgeLimit);
+        this.minAge.setValue(loadedSettings.getMinAge());
         this.minAge.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                Integer newMinAge = minAge.getValue();
-                settingsViewModel.updateMinAge(view.getContext(), newMinAge);
-                Toast.makeText(view.getContext(), R.string.Updated, Toast.LENGTH_SHORT).show();
+                loadedSettings.setMinAge(minAge.getValue());
+                updateSettings(view, loadedSettings);
             }
         });
 
+        this.maxAge = view.findViewById(R.id.max_age_value);
+        this.maxAge.setMinValue(minAgeLimit);
+        this.maxAge.setMaxValue(maxAgeLimit);
+        this.maxAge.setValue(loadedSettings.getMaxAge());
         this.maxAge.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                Integer newMaxAge = maxAge.getValue();
-                settingsViewModel.updateMaxAge(view.getContext(), newMaxAge);
-                Toast.makeText(view.getContext(), R.string.Updated, Toast.LENGTH_SHORT).show();
+                loadedSettings.setMaxAge(maxAge.getValue());
+                updateSettings(view, loadedSettings);
             }
         });
 
-        // sign Out Button
+        // Back Button
         Button buttonSecondView = view.findViewById(R.id.buttonSecondView);
         buttonSecondView.setOnClickListener(new View.OnClickListener() {
             @Override
