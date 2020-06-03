@@ -27,13 +27,6 @@ import androidx.test.rule.ActivityTestRule;
                 new ActivityTestRule<>(SignUpActivity.class);
 
     @Test
-    public void hasTextOnScreen(){
-        onView(withId(R.id.title))
-                .check(matches(withText(R.string.assignment4)));
-
-    }
-
-    @Test
     public void hasLogoImage() {
         onView(withId(R.id.logoImage)).check(matches(isDisplayed()));
     }
