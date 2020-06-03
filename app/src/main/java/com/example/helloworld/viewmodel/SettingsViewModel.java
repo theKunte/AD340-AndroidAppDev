@@ -28,4 +28,18 @@ public class SettingsViewModel extends ViewModel {
             db.settingsDao().delete(settings);
         });
     }
+
+//    public void updateMinAge(Context context, Integer minAge) {
+//        AppDatabase db = AppDatabaseSingleton.getDatabase(context);
+//        db.getTransactionExecutor().execute(() -> {
+//            db.settingsDao().updateMinAge(minAge);
+//        });
+//    }
+//
+//    public void updateMaxAge(Context context, Integer maxAge) {
+//        AppDatabase db = AppDatabaseSingleton.getDatabase(context);
+//        db.getTransactionExecutor().execute(() -> {
+//            db.settingsDao().updateMaxAge(maxAge);
+//        });
+//    }
 }

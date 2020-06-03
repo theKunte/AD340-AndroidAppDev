@@ -21,6 +21,12 @@ public interface SettingsDao {
     @Update
     void updateSettings(Settings settings);
 
+//    @Query("SELECT * FROM settings WHERE id = (:id)")
+//    void updateMinAge(Integer id, Integer minAge);
+//
+//    @Query("SELECT * FROM settings WHERE id = (:id)")
+//    void updateMaxAge(Integer id, Integer maxAge);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertSettings(Settings settings);
 

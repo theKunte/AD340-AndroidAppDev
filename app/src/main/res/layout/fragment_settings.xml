@@ -122,10 +122,10 @@
                     android:text="@string/min_age"
                     android:textColor="@color/headings"/>
 
-                <TextView
+                <NumberPicker
                     android:id="@+id/min_age_value"
                     android:layout_width="@dimen/dime_width120"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="@dimen/dim30" />
 
                 <TextView
                     android:id="@+id/max_age_label"
@@ -134,10 +134,10 @@
                     android:text="@string/max_age"
                     android:textColor="@color/headings"/>
 
-                <TextView
+                <NumberPicker
                     android:id="@+id/max_age_value"
                     android:layout_width="@dimen/dime_width120"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="@dimen/dim30"/>
 
                 <View
                     android:layout_width="match_parent"

@@ -12,7 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import com.example.helloworld.entity.Settings;
 import com.example.helloworld.viewmodel.SettingsViewModel;
@@ -23,7 +24,10 @@ public class SettingsFragment extends Fragment {
 
     private Integer settingsId = 1;
     private SettingsViewModel settingsViewModel;
-    private TextView tv_minAge;
+    private NumberPicker minAge;
+    private NumberPicker maxAge;
+    private int defaultMinAge = 18;
+    private int defaultMaxAge = 120;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -51,8 +55,9 @@ public class SettingsFragment extends Fragment {
                 return;
             }
 
-        //set layout views w/ data retrieved
-            this.tv_minAge.setText(newSettings.getMinAge());
+            //TODO set layout views w/ data retrieved
+            this.minAge.setValue(newSettings.getMinAge());
+            this.maxAge.setValue(newSettings.getMaxAge());
         };
 
         settingsViewModel.loadSettingsById(this.getContext(), 1).observe(this, getSettingsObserver);
@@ -62,18 +67,19 @@ public class SettingsFragment extends Fragment {
 
         settingsViewModel.updateSettings(this.getContext(), settings);
 
-        this.tv_minAge.setText(settings.getMinAge());
-//      add other fields
+        this.minAge.setValue(settings.getMinAge());
+        this.minAge.setValue(settings.getMaxAge());
     }
 
     public void deleteSettings(View view) {
         Settings currentSettings = new Settings();
-        currentSettings.setMinAge(Integer.parseInt(this.tv_minAge.getText().toString()));
+        currentSettings.setMinAge(this.minAge.getValue());
         //add other fields
 
         settingsViewModel.deleteSettings(this.getContext(), currentSettings);
 
-        this.tv_minAge.setText("");
+        this.minAge.setValue(this.defaultMinAge);
+        this.maxAge.setValue(this.defaultMaxAge);
         //add other fields
 
     }
@@ -83,20 +89,29 @@ public class SettingsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        this.tv_minAge = view.findViewById(R.id.min_age_value);
+        this.minAge = view.findViewById(R.id.min_age_value);
+        this.minAge.setMinValue(defaultMinAge);
+        this.minAge.setMaxValue(defaultMaxAge);
 
-        this.tv_minAge.addTextChangedListener(new TextWatcher() {
+        this.maxAge = view.findViewById(R.id.max_age_value);
+        this.maxAge.setMinValue(defaultMinAge);
+        this.maxAge.setMaxValue(defaultMaxAge);
+
+        this.minAge.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                Integer newMinAge = minAge.getValue();
+                settingsViewModel.updateMinAge(view.getContext(), newMinAge);
+                Toast.makeText(view.getContext(), R.string.Updated, Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        this.maxAge.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String newMinAge = String.valueOf(this.minAge.getText());
-
-                settingsViewModel.updateMinAge(newMinAge);
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                Integer newMaxAge = maxAge.getValue();
+                settingsViewModel.updateMaxAge(view.getContext(), newMaxAge);
+                Toast.makeText(view.getContext(), R.string.Updated, Toast.LENGTH_SHORT).show();
             }
         });
 
