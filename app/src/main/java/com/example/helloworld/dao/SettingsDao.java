@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public interface SettingsDao {
 
-    @Query("SELECT * FROM settings WHERE id = (:id)")
+    @Query("SELECT * FROM settings WHERE id = (:id) LIMIT 1")
     LiveData<Settings> loadById(Integer id);
 
     @Update

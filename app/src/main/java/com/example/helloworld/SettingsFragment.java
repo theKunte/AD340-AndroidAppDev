@@ -34,47 +34,35 @@ public class SettingsFragment extends Fragment {
         // Required empty public constructor
     }
 
-//    public static SettingsFragment newInstance() {
-//        SettingsFragment fragment = new SettingsFragment();
-//        Bundle args = new Bundle();
-////        args.putString(ARG_PARAM1, param1);
-////        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         settingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
 
         // Create the observer which updates the UI.
-        final Observer<Settings> getSettingsObserver = newSettings -> {
-            if (newSettings == null) {
-                return;
+        final Observer<Settings> getSettingsObserver = dbSettings -> {
+            loadedSettings = dbSettings;
+
+            if (loadedSettings == null) {
+                //use default settings
+                loadedSettings = new Settings();
+                loadedSettings.setId(1);
+                loadedSettings.setMatchReminderHour(14);
+                loadedSettings.setMatchReminderMin(0);
+                loadedSettings.setPrivateAccount(false);
+                loadedSettings.setMaxDistance(5);
+                loadedSettings.setMinAge(18);
+                loadedSettings.setMaxAge(120);
+//                return;
             }
 
-            //TODO set layout views w/ data retrieved
-            this.minAge.setValue(newSettings.getMinAge());
-            this.maxAge.setValue(newSettings.getMaxAge());
+            this.minAge.setValue(loadedSettings.getMinAge());
+            this.maxAge.setValue(loadedSettings.getMaxAge());
         };
 
         settingsViewModel.loadSettingsById(this.getContext(), 1).observe(this, getSettingsObserver);
-        loadedSettings = settingsViewModel.loadSettingsById(this.getContext(), 1).getValue();
-
-        if (loadedSettings == null){
-            loadedSettings = new Settings();
-            loadedSettings.setId(1);
-            loadedSettings.setMatchReminderHour(14);
-            loadedSettings.setMatchReminderMin(0);
-            loadedSettings.setPrivateAccount(false);
-            loadedSettings.setMaxDistance(5);
-            loadedSettings.setMinAge(18);
-            loadedSettings.setMaxAge(120);
-        }
-
+        settingsViewModel.loadSettingsById(this.getContext(), 1).getValue();
     }
 
     public void updateSettings(View view, Settings settings) {
@@ -104,7 +92,11 @@ public class SettingsFragment extends Fragment {
         this.minAge = view.findViewById(R.id.min_age_value);
         this.minAge.setMinValue(minAgeLimit);
         this.minAge.setMaxValue(maxAgeLimit);
-        this.minAge.setValue(loadedSettings.getMinAge());
+
+        this.maxAge = view.findViewById(R.id.max_age_value);
+        this.maxAge.setMinValue(minAgeLimit);
+        this.maxAge.setMaxValue(maxAgeLimit);
+
         this.minAge.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
@@ -113,10 +105,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        this.maxAge = view.findViewById(R.id.max_age_value);
-        this.maxAge.setMinValue(minAgeLimit);
-        this.maxAge.setMaxValue(maxAgeLimit);
-        this.maxAge.setValue(loadedSettings.getMaxAge());
         this.maxAge.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
