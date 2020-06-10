@@ -38,11 +38,12 @@
         <item>Piazza del Capitolo - 50122 Florence</item>
         <item>New York City</item>
     </string-array>
-    <array name="match_avator">
-        <item>@drawable/dog1</item>
-        <item>@drawable/cats</item>
-        <item>@drawable/hedghog</item>
-    </array>
+    <string-array name="genderOptions">
+        <item>Female</item>
+        <item>Male</item>
+        <item>NonBinary</item>
+        <item>None</item>
+    </string-array>
     <array name="match_picture">
         <item>@drawable/dog1</item>
         <item>@drawable/cats</item>

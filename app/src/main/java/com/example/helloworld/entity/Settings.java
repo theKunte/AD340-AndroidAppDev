@@ -30,6 +30,10 @@ public class Settings {
     @ColumnInfo(name = "max_age")
     private Integer MaxAge;
 
+    @ColumnInfo(name = "gender_preference")
+    private Integer GenderPreference;
+
+
     public Integer getId() {
         return id;
     }
@@ -84,5 +88,14 @@ public class Settings {
 
     public void setMatchReminderMin(Integer matchReminderMin) {
         MatchReminderMin = matchReminderMin;
+
     }
+    public Integer getGenderPreference() {
+        return GenderPreference;
+    }
+
+    public void setGenderPreference(Integer genderPreference) {
+        GenderPreference = genderPreference;
+    }
+
 }

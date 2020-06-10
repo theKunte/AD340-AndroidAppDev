@@ -55,5 +55,6 @@
     <string name="min_age">Min. Age</string>
     <string name="max_age">Max Age</string>
     <string name="Updated">Updated</string>
+    <string name="set">Set</string>
     >
 </resources>
