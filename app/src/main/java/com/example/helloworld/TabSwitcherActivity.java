@@ -1,11 +1,19 @@
 package com.example.helloworld;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
+
+import android.content.Context;
+import android.content.pm.PackageManager;
+
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 import com.example.helloworld.viewmodel.FirebaseMatchesViewModel;
@@ -20,6 +28,7 @@ public class TabSwitcherActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     FirebaseMatchesViewModel matchesViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
