@@ -48,15 +48,26 @@ public class FirebaseMatchesViewModel {
                         for (DocumentSnapshot matchesSnapshot : querySnapshot.getDocuments()) {
                             Match match = matchesSnapshot.toObject(Match.class);
                             Location matchLocation = new Location("");
-                            matchLocation.setLatitude(Double.parseDouble(match.getLat()));
-                            matchLocation.setLongitude(Double.parseDouble(match.getLongitude()));
+
+                            Double lat = Double.parseDouble(match.getLat());
+                            Double lon = Double.parseDouble(match.getLongitude());
+
+                            matchLocation.setLatitude(lat);
+                            matchLocation.setLongitude(lon);
 
                             assert match != null;
                             match.setUid(matchesSnapshot.getId());
 
-//                            double distance = distance(userLocation, matchLocation);
-                            double distance = userLocation.distanceTo(matchLocation) / 160009.34;
-                            if (distance <= proximity) {
+                            Double testLat = 47.6141442;
+                            Double  testLong = -122.3494224;
+
+                            float[] results = new float[1];
+                            Location.distanceBetween(userLocation.getLatitude(), userLocation.getLongitude(), lat, lon ,results);
+                            float distMeters = results[0];
+//                            float distMeters = userLocation.distanceTo(matchLocation);
+                            float distMiles = distMeters / 1609.34f;
+
+                            if (distMiles <= proximity) {
                                 matches.add(match);
                             }
                         }
