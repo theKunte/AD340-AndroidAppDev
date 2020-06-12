@@ -1,9 +1,12 @@
 package com.example.helloworld.entity;
 
+import com.example.helloworld.Constants;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.annotation.NonNull;
+
+import com.example.helloworld.Constants;
 
 @Entity
 public class Settings {
@@ -98,4 +101,15 @@ public class Settings {
         GenderPreference = genderPreference;
     }
 
+    public void setDefaultValues() {
+        this.setId(Constants.SETTINGS_DEFAULT_ID);
+        this.setMatchReminderHour(Constants.SETTINGS_DEFAULT_ReminderHour);
+        this.setMatchReminderMin(Constants.SETTINGS_DEFAULT_ReminderMinutes);
+        this.setPrivateAccount(Constants.SETTINGS_DEFAULT_PrivateAccount);
+        this.setMaxDistance(Constants.SETTINGS_DEFAULT_MaxDistance);
+        this.setMinAge(Constants.SETTINGS_DEFAULT_MinAge);
+        this.setMaxAge(Constants.SETTINGS_DEFAULT_MaxAge);
+        this.setGenderPreference(Constants.SETTINGS_DEFAULT_GenderPreference);
+
+    }
 }

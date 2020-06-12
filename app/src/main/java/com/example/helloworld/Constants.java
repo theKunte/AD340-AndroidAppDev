@@ -18,4 +18,20 @@ public class Constants {
     static final String TEST_KEY_OCCUPATION= "MOBDEV SOFTWARE GURU NINJA ROCKSTAR";
     static final String TEST_KEY_DESCRIPTION= "I love sushi";
 
+    //default settings
+    public static final Integer SETTINGS_DEFAULT_ID = 1;
+    public static final Integer SETTINGS_DEFAULT_MinAge = 18;
+    public static final Integer SETTINGS_DEFAULT_MaxAge = 120;
+    public static final Integer SETTINGS_DEFAULT_ReminderHour = 14;
+    public static final Integer SETTINGS_DEFAULT_ReminderMinutes = 0;
+    public static final boolean SETTINGS_DEFAULT_PrivateAccount = false;
+    public static final Integer SETTINGS_DEFAULT_MaxDistance = 5;
+    public static final Integer SETTINGS_DEFAULT_GenderPreference = 0;
+
+    //Limits for Number pickers
+    public static final Integer NP_minAgeLimit = 18;
+    public static final Integer NP_maxAgeLimit = 120;
+    public static final Integer NP_minDistanceLimit = 3;
+    public static final Integer NP_maxDistanceLimit = 1000;
+
 }

@@ -39,21 +39,6 @@ public class SettingsFragment extends Fragment {
     private NumberPicker maxAgePicker;
     private Spinner genderPreferenceSpinner;
 
-    private Integer minAgeLimit = 18;
-    private Integer maxAgeLimit = 120;
-    private Integer minDistanceLimit = 3;
-    private Integer maxDistanceLimit = 100;
-
-    //defaults
-    private Integer defaultId = 1;
-    private Integer defaultMinAge = 18;
-    private Integer defaultMaxAge = 120;
-    private Integer defaultReminderHour = 14;
-    private Integer defaultReminderMinutes = 0;
-    private boolean defaultPrivateAccount = false;
-    private Integer defaultMaxDistance = 5;
-    private Integer defaultGenderPreference = 0;
-
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -69,16 +54,8 @@ public class SettingsFragment extends Fragment {
             loadedSettings = dbSettings;
 
             if (loadedSettings == null) {
-                //use default settings
                 loadedSettings = new Settings();
-                loadedSettings.setId(defaultId);
-                loadedSettings.setMatchReminderHour(defaultReminderHour);
-                loadedSettings.setMatchReminderMin(defaultReminderMinutes);
-                loadedSettings.setPrivateAccount(defaultPrivateAccount);
-                loadedSettings.setMaxDistance(defaultMaxDistance);
-                loadedSettings.setMinAge(defaultMinAge);
-                loadedSettings.setMaxAge(defaultMaxAge);
-                loadedSettings.setGenderPreference(defaultGenderPreference);
+                loadedSettings.setDefaultValues();
                 updateSettings(loadedSettings);
             }
 
@@ -109,8 +86,8 @@ public class SettingsFragment extends Fragment {
 
         settingsViewModel.deleteSettings(this.getContext(), currentSettings);
 
-        this.minAgePicker.setValue(this.minAgeLimit);
-        this.maxAgePicker.setValue(this.maxAgeLimit);
+        this.minAgePicker.setValue(Constants.NP_minAgeLimit);
+        this.maxAgePicker.setValue(Constants.NP_maxAgeLimit);
         //add other fields
 
     }
@@ -144,8 +121,8 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        this.minAgePicker.setMinValue(minAgeLimit);
-        this.minAgePicker.setMaxValue(maxAgeLimit);
+        this.minAgePicker.setMinValue(Constants.NP_minAgeLimit);
+        this.minAgePicker.setMaxValue(Constants.NP_maxAgeLimit);
         this.minAgePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
@@ -154,8 +131,8 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        this.maxAgePicker.setMinValue(minAgeLimit);
-        this.maxAgePicker.setMaxValue(maxAgeLimit);
+        this.maxAgePicker.setMinValue(Constants.NP_minAgeLimit);
+        this.maxAgePicker.setMaxValue(Constants.NP_maxAgeLimit);
         this.maxAgePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
@@ -164,8 +141,8 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        this.maxDistancePicker.setMinValue(minDistanceLimit);
-        this.maxDistancePicker.setMaxValue(maxDistanceLimit);
+        this.maxDistancePicker.setMinValue(Constants.NP_minDistanceLimit);
+        this.maxDistancePicker.setMaxValue(Constants.NP_maxDistanceLimit);
         this.maxDistancePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {

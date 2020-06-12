@@ -1,7 +1,9 @@
 package com.example.helloworld;
 
+import com.example.helloworld.entity.Settings;
 import com.example.helloworld.model.Match;
 import com.example.helloworld.viewmodel.FirebaseMatchesViewModel;
+import com.example.helloworld.viewmodel.SettingsViewModel;
 import com.squareup.picasso.Picasso;
 
 import android.annotation.SuppressLint;
@@ -14,6 +16,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,12 +39,15 @@ FirebaseMatchesViewModel viewModel;
     Location userLocation;
     ContentAdapter adapter;
     RecyclerView recyclerView;
+    private Settings loadedSettings;
 
     private final LocationListener locationListenerNetwork = new LocationListener() {
         public void onLocationChanged(Location location) {
             userLocation = location;
 
-            adapter = new ContentAdapter(userLocation, recyclerView.getContext(), viewModel);
+            Integer proximity = loadedSettings.getMaxDistance();
+
+            adapter = new ContentAdapter(userLocation, recyclerView.getContext(), viewModel, proximity);
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -49,7 +56,7 @@ FirebaseMatchesViewModel viewModel;
         }
 
         private boolean isLocationEnabled() {
-            return locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         }
 
         @Override
@@ -66,12 +73,29 @@ FirebaseMatchesViewModel viewModel;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
 
-        if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        SettingsViewModel settingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
 
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60 * 1000, 10, locationListenerNetwork);
-            Toast.makeText(getContext(), "Location set", Toast.LENGTH_LONG).show();
-        }
+        final Observer<Settings> getSettingsObserver = dbSettings -> {
+            loadedSettings = dbSettings;
+
+            if (loadedSettings == null) {
+                loadedSettings = new Settings();
+                loadedSettings.setDefaultValues();
+                Toast.makeText(getContext(), "Use default settings", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getContext(), "Settings Loaded", Toast.LENGTH_LONG).show();
+            }
+
+            if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60 * 1000, 10, locationListenerNetwork);
+                Toast.makeText(getContext(), "Location set", Toast.LENGTH_LONG).show();
+            }
+        };
+
+        settingsViewModel.loadSettingsById(this.getContext(), 1).observe(getViewLifecycleOwner(), getSettingsObserver);
+        settingsViewModel.loadSettingsById(this.getContext(), 1).getValue();
 
         viewModel = new FirebaseMatchesViewModel();
         recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
@@ -112,11 +136,11 @@ FirebaseMatchesViewModel viewModel;
         private ArrayList<Match> matches;
         private FirebaseMatchesViewModel viewModel;
 
-        ContentAdapter(Location userLocation, Context context, FirebaseMatchesViewModel viewModel) {
+        ContentAdapter(Location userLocation, Context context, FirebaseMatchesViewModel viewModel, Integer proximity) {
             this.viewModel = viewModel;
             context.getResources();
             viewModel = new FirebaseMatchesViewModel();
-            viewModel.getMatchesInProximity(10, userLocation, (fb_matches -> {
+            viewModel.getMatchesInProximity(proximity, userLocation, (fb_matches -> {
                 this.matches = fb_matches;
                 length = matches.size();
                 notifyDataSetChanged();

@@ -58,13 +58,9 @@ public class FirebaseMatchesViewModel {
                             assert match != null;
                             match.setUid(matchesSnapshot.getId());
 
-                            Double testLat = 47.6141442;
-                            Double  testLong = -122.3494224;
-
                             float[] results = new float[1];
                             Location.distanceBetween(userLocation.getLatitude(), userLocation.getLongitude(), lat, lon ,results);
                             float distMeters = results[0];
-//                            float distMeters = userLocation.distanceTo(matchLocation);
                             float distMiles = distMeters / 1609.34f;
 
                             if (distMiles <= proximity) {

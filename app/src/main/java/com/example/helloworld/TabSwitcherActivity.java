@@ -48,11 +48,6 @@ public class TabSwitcherActivity extends AppCompatActivity {
 
         // check if bundle is not empty
         if (bundle != null) {
-//            name = bundle.getString("name");
-//            username = bundle.getString("username");
-//            occupation = bundle.getString("occupation");
-//            description = bundle.getString("description");
-//            age = bundle.getString("age");
 
             //Init Fragments
             ProfileFragment profileFragment = new ProfileFragment();
