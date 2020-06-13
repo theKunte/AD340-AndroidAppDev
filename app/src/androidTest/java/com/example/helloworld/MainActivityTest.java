@@ -11,6 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
@@ -77,5 +78,56 @@ import androidx.test.rule.ActivityTestRule;
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.description)).check(matches(withText(Constants.TEST_KEY_DESCRIPTION)));
     }
-    
+
+    @Test
+    public void hasNoName() {
+        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.name)).check(matches(
+                ViewMatchers.hasErrorText("Please add your name")));
+    }
+
+    @Test
+    public void hasNoEmail() {
+        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.email)).check(matches(
+                ViewMatchers.hasErrorText("Forgot to enter Email address!")));
+    }
+
+    @Test
+    public void hasNoUsername() {
+        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.username)).check(matches(
+                ViewMatchers.hasErrorText("Username can't be empty. Please add it")));
+    }
+
+    @Test
+    public void hasNoOccupation() {
+        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.occupation)).check(matches(
+                ViewMatchers.hasErrorText("Occupation can't be empty. Please add it")));
+    }
+    @Test
+
+    public void hasNoDescription() {
+        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.description)).check(matches(
+                ViewMatchers.hasErrorText("Description can't be empty. Please add it")));
+    }
+
+
+
+
+
+
+
+
+
 }
