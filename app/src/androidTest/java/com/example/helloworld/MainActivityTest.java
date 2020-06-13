@@ -81,7 +81,7 @@ import androidx.test.rule.ActivityTestRule;
 
     @Test
     public void hasNoName() {
-        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.name)).perform(typeText(""), closeSoftKeyboard());
 
         onView(withId(R.id.signUpButton)).perform(click());
         onView(withId(R.id.name)).check(matches(
@@ -90,7 +90,7 @@ import androidx.test.rule.ActivityTestRule;
 
     @Test
     public void hasNoEmail() {
-        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(""), closeSoftKeyboard());
 
         onView(withId(R.id.signUpButton)).perform(click());
         onView(withId(R.id.email)).check(matches(
@@ -99,7 +99,7 @@ import androidx.test.rule.ActivityTestRule;
 
     @Test
     public void hasNoUsername() {
-        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(typeText(""), closeSoftKeyboard());
         onView(withId(R.id.signUpButton)).perform(click());
         onView(withId(R.id.username)).check(matches(
                 ViewMatchers.hasErrorText("Username can't be empty. Please add it")));
@@ -107,7 +107,7 @@ import androidx.test.rule.ActivityTestRule;
 
     @Test
     public void hasNoOccupation() {
-        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(typeText(""), closeSoftKeyboard());
         onView(withId(R.id.signUpButton)).perform(click());
         onView(withId(R.id.occupation)).check(matches(
                 ViewMatchers.hasErrorText("Occupation can't be empty. Please add it")));
@@ -115,7 +115,7 @@ import androidx.test.rule.ActivityTestRule;
     @Test
 
     public void hasNoDescription() {
-        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(typeText(""), closeSoftKeyboard());
 
         onView(withId(R.id.signUpButton)).perform(click());
         onView(withId(R.id.description)).check(matches(
