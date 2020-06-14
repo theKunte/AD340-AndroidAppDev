@@ -79,55 +79,48 @@ import androidx.test.rule.ActivityTestRule;
         onView(withId(R.id.description)).check(matches(withText(Constants.TEST_KEY_DESCRIPTION)));
     }
 
-    @Test
-    public void hasNoName() {
-        onView(withId(R.id.name)).perform(typeText(""), closeSoftKeyboard());
-
-        onView(withId(R.id.signUpButton)).perform(click());
-        onView(withId(R.id.name)).check(matches(
-                ViewMatchers.hasErrorText("Please add your name")));
-    }
-
-    @Test
-    public void hasNoEmail() {
-        onView(withId(R.id.email)).perform(typeText(""), closeSoftKeyboard());
-
-        onView(withId(R.id.signUpButton)).perform(click());
-        onView(withId(R.id.email)).check(matches(
-                ViewMatchers.hasErrorText("Forgot to enter Email address!")));
-    }
-
-    @Test
-    public void hasNoUsername() {
-        onView(withId(R.id.username)).perform(typeText(""), closeSoftKeyboard());
-        onView(withId(R.id.signUpButton)).perform(click());
-        onView(withId(R.id.username)).check(matches(
-                ViewMatchers.hasErrorText("Username can't be empty. Please add it")));
-    }
-
-    @Test
-    public void hasNoOccupation() {
-        onView(withId(R.id.occupation)).perform(typeText(""), closeSoftKeyboard());
-        onView(withId(R.id.signUpButton)).perform(click());
-        onView(withId(R.id.occupation)).check(matches(
-                ViewMatchers.hasErrorText("Occupation can't be empty. Please add it")));
-    }
-    @Test
-
-    public void hasNoDescription() {
-        onView(withId(R.id.description)).perform(typeText(""), closeSoftKeyboard());
-
-        onView(withId(R.id.signUpButton)).perform(click());
-        onView(withId(R.id.description)).check(matches(
-                ViewMatchers.hasErrorText("Description can't be empty. Please add it")));
-    }
-
-
-
-
-
-
-
-
-
+//    @Test
+//    public void hasNoName() {
+//        onView(withId(R.id.name)).perform(typeText(""), closeSoftKeyboard());
+//
+//        onView(withId(R.id.signUpButton)).perform(click());
+//        onView(withId(R.id.name)).check(matches(
+//                ViewMatchers.hasErrorText("Please add your name")));
+//    }
+//
+//    @Test
+//    public void hasNoEmail() {
+//        onView(withId(R.id.email)).perform(typeText(""), closeSoftKeyboard());
+//
+//        onView(withId(R.id.signUpButton)).perform(click());
+//        onView(withId(R.id.email)).check(matches(
+//                ViewMatchers.hasErrorText("Forgot to enter Email address!")));
+//    }
+//
+//    @Test
+//    public void hasNoUsername() {
+//        onView(withId(R.id.username)).perform(typeText(""), closeSoftKeyboard());
+//        onView(withId(R.id.signUpButton)).perform(click());
+//        onView(withId(R.id.username)).check(matches(
+//                ViewMatchers.hasErrorText("Username can't be empty. Please add it")));
+//    }
+//
+//    @Test
+//    public void hasNoOccupation() {
+//        onView(withId(R.id.occupation)).perform(typeText(""), closeSoftKeyboard());
+//        onView(withId(R.id.signUpButton)).perform(click());
+//        onView(withId(R.id.occupation)).check(matches(
+//                ViewMatchers.hasErrorText("Occupation can't be empty. Please add it")));
+//    }
+//    @Test
+//
+//    public void hasNoDescription() {
+//        onView(withId(R.id.description)).perform(typeText(""), closeSoftKeyboard());
+//
+//        onView(withId(R.id.signUpButton)).perform(click());
+//        onView(withId(R.id.description)).check(matches(
+//                ViewMatchers.hasErrorText("Description can't be empty. Please add it")));
+//    }
+//
+    
 }

@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SignUpActivity.this, TabSwitcherActivity.class);
 
-                if (validateName(name) && validateUsername(username) && validateEmail(email)  && isOfAge) {
+                if (validateName(name) && validateUsername(username) && validateEmail(email)  && isOfAge && validateOccupation(occupation) && validateDescription(description)) {
                     intent.putExtra(Constants.KEY_NAME, name.getText().toString());
                     intent.putExtra(Constants.KEY_USERNAME, username.getText().toString());
                     intent.putExtra(Constants.KEY_AGE, Integer.toString(age));
@@ -133,7 +133,7 @@ public class SignUpActivity extends AppCompatActivity {
         String dateOfBirthInfoInput = dateOfBirthInfo.getText().toString().trim();
 
         if (dateOfBirthInfoInput.isEmpty()) {
-            dateOfBirthInfo.setError("Field can't be empty.");
+            dateOfBirthInfo.setError("Age can't be empty.");
             return false;
         }
         if (age < 18) {
@@ -169,6 +169,32 @@ public class SignUpActivity extends AppCompatActivity {
         if (!Patterns.EMAIL_ADDRESS.matcher(emailInfo).matches()) {
             email.setError("Invalid Email address!");
             return false;
+        }
+        return true;
+    }
+
+    boolean validateOccupation(EditText email){
+        String usernameInput = occupation.getText().toString().trim();
+
+        if (usernameInput.isEmpty()) {
+            occupation.setError("Occupation can't be empty. Please add it");
+            return false;
+        }
+        if (usernameInput.length() > 60) {
+            occupation.setError("Your Occupation is to long, find a new job!");
+        }
+        return true;
+    }
+
+    boolean validateDescription(EditText email){
+        String usernameInput = description.getText().toString().trim();
+
+        if (usernameInput.isEmpty()) {
+            description.setError("Description can't be empty. Please add it");
+            return false;
+        }
+        if (usernameInput.length() > 1000) {
+            description.setError("Your Description is to long, make it short and sweet!");
         }
         return true;
     }

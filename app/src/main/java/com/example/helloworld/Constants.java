@@ -7,7 +7,6 @@ public class Constants {
     static final String KEY_AGE = "age";
     static final String KEY_OCCUPATION = "occupation";
     static final String KEY_DESCRIPTION = "description";
-
     static final String KEY_DateOFBirth = "dateOfBirth";
     static final String KEY_EMPTY = "";
 
@@ -17,6 +16,16 @@ public class Constants {
     static final String TEST_KEY_DateOfBirth = "03/20/1998";
     static final String TEST_KEY_OCCUPATION = "MOBDEV SOFTWARE GURU NINJA ROCKSTAR";
     static final String TEST_KEY_DESCRIPTION = "I love sushi";
+    static final String TEST_KEY_EMPTY = "";
+
+    // Error Text
+    static final String TEST_NAME_ERR ="Please add your name";
+    static final String TEST_USERNAME_ERR ="Username can't be empty. Please add it";
+    static final String TEST_EMAIL_ERR ="Forgot to enter Email address!";
+    static final String TEST_AGE_ERR ="Age can't be empty.";
+    static final String TEST_OCC_ERR ="Occupation can't be empty. Please add it";
+    static final String TEST_DES_ERR ="Description can't be empty. Please add it";
+
 
     //default settings
     public static final Integer SETTINGS_DEFAULT_ID = 1;
