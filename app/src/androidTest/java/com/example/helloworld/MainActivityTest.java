@@ -11,6 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
@@ -76,6 +77,54 @@ public class MainActivityTest {
         onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.description)).check(matches(withText(Constants.TEST_KEY_DESCRIPTION)));
+    }
+
+    @Test
+    public void hasNoName() {
+        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.name)).check(matches(
+                ViewMatchers.hasErrorText(Constants.NAME_ERR)));
+    }
+
+    @Test
+    public void hasNoSpaceInName() {
+        onView(withId(R.id.name)).perform(typeText(Constants.TEST_NAME_NOSPACE), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.name)).check(matches(
+                ViewMatchers.hasErrorText(Constants.NAME_NO_SPACE_ERR)));
+    }
+
+    @Test
+    public void nameIsToLong() {
+        onView(withId(R.id.name)).perform(typeText(Constants.TEST_NAME_TO_LONG), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.name)).check(matches(
+                ViewMatchers.hasErrorText(Constants.TEST_NAME_TO_LONG_ERR)));
+    }
+
+    @Test
+    public void hasNoUserName() {
+        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.username)).check(matches(
+                ViewMatchers.hasErrorText(Constants.USERNAME_ERR)));
+    }
+
+    @Test
+    public void hasNoEmail() {
+        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.email)).check(matches(
+                ViewMatchers.hasErrorText(Constants.EMAIL_ERR)));
     }
 
 }

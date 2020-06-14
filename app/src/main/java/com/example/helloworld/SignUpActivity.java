@@ -109,15 +109,15 @@ public class SignUpActivity extends AppCompatActivity {
     boolean validateName(EditText name) {
         String signUpFullName = name.getText().toString().trim();
         if (signUpFullName.isEmpty()) {
-            name.setError("Hi! enter your Full Name please!");
+            name.setError(Constants.NAME_ERR);
             return false;
         }
-        if (signUpFullName.length() > 100) {
-            name.setError("WOW! Your Name is long! Its to long for the app make");
+        if (signUpFullName.length() > 30) {
+            name.setError(Constants.TEST_NAME_TO_LONG_ERR);
             return false;
         }
         if(!signUpFullName.contains(" ")){
-            name.setError("First and Lastname should have a space in between");
+            name.setError(Constants.NAME_NO_SPACE_ERR);
             return false;
         }
         return true;
@@ -133,11 +133,11 @@ public class SignUpActivity extends AppCompatActivity {
         String dateOfBirthInfoInput = dateOfBirthInfo.getText().toString().trim();
 
         if (dateOfBirthInfoInput.isEmpty()) {
-            dateOfBirthInfo.setError("Age can't be empty.");
+            dateOfBirthInfo.setError(Constants.AGE_ERR);
             return false;
         }
         if (age < 18) {
-            dateOfBirthInfo.setError("You have to be 18 years old!");
+            dateOfBirthInfo.setError(Constants.AGE_TO_YOUNG_ERR);
             return false;
         }
         else {
@@ -151,11 +151,11 @@ public class SignUpActivity extends AppCompatActivity {
         String usernameInput = username.getText().toString().trim();
 
         if (usernameInput.isEmpty()) {
-            username.setError("Username can't be empty. Please add it");
+            username.setError(Constants.USERNAME_ERR);
             return false;
         }
-        if (usernameInput.length() > 60) {
-            username.setError("Your Username is to long!");
+        if (usernameInput.length() > 15) {
+            username.setError(Constants.USERNAME_TO_LONG);
         }
         return true;
     }
@@ -163,7 +163,7 @@ public class SignUpActivity extends AppCompatActivity {
     boolean validateEmail(EditText email){
         String emailInfo = email.getText().toString().trim();
         if(emailInfo.isEmpty()){
-            email.setError("Forgot to enter Email address!");
+            email.setError(Constants.EMAIL_ERR);
             return false;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(emailInfo).matches()) {
@@ -177,10 +177,10 @@ public class SignUpActivity extends AppCompatActivity {
         String usernameInput = occupation.getText().toString().trim();
 
         if (usernameInput.isEmpty()) {
-            occupation.setError("Occupation can't be empty. Please add it");
+            occupation.setError(Constants.OCC_ERR);
             return false;
         }
-        if (usernameInput.length() > 60) {
+        if (usernameInput.length() > 80) {
             occupation.setError("Your Occupation is to long, find a new job!");
         }
         return true;

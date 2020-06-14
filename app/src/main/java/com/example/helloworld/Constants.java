@@ -10,6 +10,8 @@ public class Constants {
     static final String KEY_DateOFBirth = "dateOfBirth";
     static final String KEY_EMPTY = "";
 
+
+
     static final String TEST_KEY_NAME = "Jenny Kunte";
     static final String TEST_KEY_EMAIL = "j.kunte@gmx.net";
     static final String TEST_KEY_USERNAME = "JeyKey98";
@@ -17,14 +19,22 @@ public class Constants {
     static final String TEST_KEY_OCCUPATION = "MOBDEV SOFTWARE GURU NINJA ROCKSTAR";
     static final String TEST_KEY_DESCRIPTION = "I love sushi";
     static final String TEST_KEY_EMPTY = "";
+    static final String TEST_NAME_NOSPACE = "JennyKunte";
+    static final String TEST_NAME_TO_LONG = "Lololololololololololololololololololo Oasasasasasasassassasasass";
+    static final String USERNAME_TO_LONG = "Your Username is to long!";
+
 
     // Error Text
-    static final String TEST_NAME_ERR ="Please add your name";
-    static final String TEST_USERNAME_ERR ="Username can't be empty. Please add it";
-    static final String TEST_EMAIL_ERR ="Forgot to enter Email address!";
-    static final String TEST_AGE_ERR ="Age can't be empty.";
-    static final String TEST_OCC_ERR ="Occupation can't be empty. Please add it";
-    static final String TEST_DES_ERR ="Description can't be empty. Please add it";
+    static final String NAME_ERR ="Please add your name";
+    static final String NAME_NO_SPACE_ERR = "First and Lastname should have a space in between";
+    static final String TEST_NAME_TO_LONG_ERR = "WOW! Your Name is long! Its to long for the app make";
+
+    static final String USERNAME_ERR ="Username can't be empty. Please add it";
+    static final String EMAIL_ERR ="Forgot to enter Email address!";
+    static final String AGE_ERR ="Age can't be empty.";
+    static final String AGE_TO_YOUNG_ERR = "You have to be 18 years old!";
+    static final String OCC_ERR ="Occupation can't be empty. Please add it";
+    static final String DES_ERR ="Description can't be empty. Please add it";
 
 
     //default settings
