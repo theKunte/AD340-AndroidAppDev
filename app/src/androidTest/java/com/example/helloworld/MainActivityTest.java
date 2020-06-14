@@ -4,6 +4,7 @@ import android.os.RemoteException;
 
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -14,6 +15,10 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -88,6 +93,7 @@ public class MainActivityTest {
                 ViewMatchers.hasErrorText(Constants.NAME_ERR)));
     }
 
+
     @Test
     public void hasNoSpaceInName() {
         onView(withId(R.id.name)).perform(typeText(Constants.TEST_NAME_NOSPACE), closeSoftKeyboard());
@@ -126,5 +132,34 @@ public class MainActivityTest {
         onView(withId(R.id.email)).check(matches(
                 ViewMatchers.hasErrorText(Constants.EMAIL_ERR)));
     }
+//
+//    @Test
+//    public void validatesAge() {
+//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+//        onView(withId(R.id.dateOfBirthInfo)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+//        onView(withId(R.id.signUpButton)).perform(click());
+//
+//        onView(withId(R.id.signUpButton)).perform(click());
+//        onView(withId(R.id.dateOfBirthInfo)).check(matches(
+//                ViewMatchers.hasErrorText(Constants.AGE_ERR)));
+//    }
+
+//    @Test
+//    public void leadsToProfilePageWithCorrectData() {
+//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL)), closeSoftKeyboard());
+//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+//        onView(withId(R.id.dateOfBirthInfo)).perform(typeText(String.valueOf("30")), closeSoftKeyboard());
+//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+//        //test
+//    }
 
 }
+
+
+

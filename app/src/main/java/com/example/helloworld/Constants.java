@@ -15,7 +15,7 @@ public class Constants {
     static final String TEST_KEY_NAME = "Jenny Kunte";
     static final String TEST_KEY_EMAIL = "j.kunte@gmx.net";
     static final String TEST_KEY_USERNAME = "JeyKey98";
-    static final String TEST_KEY_DateOfBirth = "03/20/1998";
+    static final String TEST_KEY_DateOfBirth = "03-20-1998";
     static final String TEST_KEY_OCCUPATION = "MOBDEV SOFTWARE GURU NINJA ROCKSTAR";
     static final String TEST_KEY_DESCRIPTION = "I love sushi";
     static final String TEST_KEY_EMPTY = "";
