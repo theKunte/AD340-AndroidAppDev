@@ -23,6 +23,5 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
         assertEquals("com.example.helloworld", appContext.getPackageName());
-        assertEquals("com.example.helloworld.entity", appContext.getPackageName());
     }
 }
