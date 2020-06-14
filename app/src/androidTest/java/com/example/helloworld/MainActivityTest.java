@@ -47,13 +47,13 @@ import androidx.test.rule.ActivityTestRule;
         onView(withId(R.id.username)).check(matches(withText(Constants.TEST_KEY_USERNAME)));
     }
 
-    @Test
-    public void hasValidEmail() {
-        onView(withId(R.id.email)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL));
-        Espresso.closeSoftKeyboard();
-        onView(withId(R.id.email)).check(matches(withText(Constants.TEST_KEY_EMAIL)));
-    }
+//    @Test
+//    public void hasValidEmail() {
+//        onView(withId(R.id.email)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL));
+//        Espresso.closeSoftKeyboard();
+//        onView(withId(R.id.email)).check(matches(withText(Constants.TEST_KEY_EMAIL)));
+//    }
 
     @Test
     public void hasValidName() {
@@ -122,5 +122,5 @@ import androidx.test.rule.ActivityTestRule;
 //                ViewMatchers.hasErrorText("Description can't be empty. Please add it")));
 //    }
 //
-    
+
 }
