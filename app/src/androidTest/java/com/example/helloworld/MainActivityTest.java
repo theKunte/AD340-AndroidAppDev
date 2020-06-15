@@ -75,13 +75,13 @@ public class MainActivityTest {
         onView(withId(R.id.name)).check(matches(withText(Constants.TEST_KEY_NAME)));
     }
 
-    @Test
-    public void hasValidOccupation() {
-        onView(withId(R.id.occupation)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION));
-        Espresso.closeSoftKeyboard();
-        onView(withId(R.id.occupation)).check(matches(withText(Constants.TEST_KEY_OCCUPATION)));
-    }
+//    @Test
+//    public void hasValidOccupation() {
+//        onView(withId(R.id.occupation)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION));
+//        Espresso.closeSoftKeyboard();
+//        onView(withId(R.id.occupation)).check(matches(withText(Constants.TEST_KEY_OCCUPATION)));
+//    }
 
 //    @Test
 //    public void hasValidDescription() {
@@ -228,7 +228,7 @@ public class MainActivityTest {
 //
 //        onView(withText("OK")).perform(click());
 //        onView(withId(R.id.dateOfBirthInfo))
-//                .check(matches(withText("12-01-2000"))); //date is being calculated wrong 
+//                .check(matches(withText("12-01-2000"))); //date is being calculated wrong
 //    }
 
 //    @Test
