@@ -2,10 +2,7 @@ package com.example.helloworld;
 
 import android.os.RemoteException;
 import android.widget.DatePicker;
-
 import androidx.test.espresso.Espresso;
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.uiautomator.UiDevice;
