@@ -35,6 +35,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText occupation;
     private int age;
     private boolean isOfAge;
+    private boolean birthdayWasSelected;
+
 
     DatePickerDialog.OnDateSetListener setListener;
 
@@ -60,7 +62,12 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SignUpActivity.this, TabSwitcherActivity.class);
 
-                if (validateName(name) && validateUsername(username) && validateEmail(email)  && isOfAge && validateOccupation(occupation) && validateDescription(description)) {
+                if (!birthdayWasSelected){
+                        dateOfBirthInfo.setError(Constants.AGE_ERR);
+                        dateOfBirthInfo.setText(Constants.AGE_ERR);
+                }
+
+                if (validateName(name) && validateUsername(username) && validateEmail(email)  && isOfAge && birthdayWasSelected && validateOccupation(occupation) && validateDescription(description)) {
                     intent.putExtra(Constants.KEY_NAME, name.getText().toString());
                     intent.putExtra(Constants.KEY_USERNAME, username.getText().toString());
                     intent.putExtra(Constants.KEY_AGE, Integer.toString(age));
@@ -91,6 +98,8 @@ public class SignUpActivity extends AppCompatActivity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
+
+                birthdayWasSelected = true;
 
                 Calendar cal = Calendar.getInstance();
                 cal.set(Calendar.YEAR, year);
@@ -130,14 +139,10 @@ public class SignUpActivity extends AppCompatActivity {
         Calendar today = Calendar.getInstance();
 
         age = today.get(Calendar.YEAR) - dateOfBirthCal.get(Calendar.YEAR);
-        String dateOfBirthInfoInput = dateOfBirthInfo.getText().toString().trim();
 
-        if (dateOfBirthInfoInput.isEmpty()) {
-            dateOfBirthInfo.setError(Constants.AGE_ERR);
-            return false;
-        }
         if (age < 18) {
             dateOfBirthInfo.setError(Constants.AGE_TO_YOUNG_ERR);
+            dateOfBirthInfo.setText(Constants.AGE_TO_YOUNG_ERR);
             return false;
         }
         else {
