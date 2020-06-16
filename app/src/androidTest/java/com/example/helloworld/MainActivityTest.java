@@ -3,6 +3,7 @@ package com.example.helloworld;
 import android.os.RemoteException;
 import android.widget.DatePicker;
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.uiautomator.UiDevice;
@@ -13,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -72,40 +74,40 @@ public class MainActivityTest {
         onView(withId(R.id.name)).check(matches(withText(Constants.TEST_KEY_NAME)));
     }
 
-//    @Test
-//    public void hasValidOccupation() {
-//        onView(withId(R.id.occupation)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION));
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.occupation)).check(matches(withText(Constants.TEST_KEY_OCCUPATION)));
-//    }
+    @Test
+    public void hasValidOccupation() {
+        onView(withId(R.id.occupation)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.occupation)).check(matches(withText(Constants.TEST_KEY_OCCUPATION)));
+    }
 
-//    @Test
-//    public void hasValidDescription() {
-//        onView(withId(R.id.description)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION));
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.description)).check(matches(withText(Constants.TEST_KEY_DESCRIPTION)));
-//    }
+    @Test
+    public void hasValidDescription() {
+        onView(withId(R.id.description)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.description)).check(matches(withText(Constants.TEST_KEY_DESCRIPTION)));
+    }
 
     @Test
     public void hasNoName() {
-        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
 
-        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
         onView(withId(R.id.name)).check(matches(
                 ViewMatchers.hasErrorText(Constants.NAME_ERR)));
     }
 
 
-//    @Test
-//    public void hasNoSpaceInName() {
-//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_NAME_NOSPACE), closeSoftKeyboard());
-//
-//        onView(withId(R.id.signUpButton)).perform(click());
-//        onView(withId(R.id.name)).check(matches(
-//                ViewMatchers.hasErrorText(Constants.NAME_NO_SPACE_ERR)));
-//    }
+    @Test
+    public void hasNoSpaceInName() {
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_NAME_NOSPACE), closeSoftKeyboard());
+
+        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+        onView(withId(R.id.name)).check(matches(
+                ViewMatchers.hasErrorText(Constants.NAME_NO_SPACE_ERR)));
+    }
 
     @Test
     public void nameIsToLong() {
@@ -154,38 +156,38 @@ public class MainActivityTest {
                 .check(matches(withText(Constants.AGE_ERR)));
     }
 
-//    @Test
-//    public void validatesAge() throws InterruptedException {
-//        Thread.sleep(2000);
-//
-//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
-//        closeSoftKeyboard();
-//        onView(withId(R.id.dateOfBirth))
-//            .perform(scrollTo()).perform(scrollTo()).perform(click());
-//
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-//                2009, 11, 31));
-//
-//        Thread.sleep(2000);
-//
-//        onView(withText("OK")).perform(scrollTo()).perform(scrollTo()).perform(click());
-//        onView(withId(R.id.dateOfBirthInfo))
-//                .check(matches(withText(Constants.AGE_TO_YOUNG_ERR)));
-//    }
+    @Test
+    public void validatesAge() throws InterruptedException {
+        Thread.sleep(2000);
+
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+            .perform(scrollTo()).perform(scrollTo()).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                2009, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(scrollTo()).perform(scrollTo()).perform(click());
+        onView(withId(R.id.dateOfBirthInfo))
+                .check(matches(withText(Constants.AGE_TO_YOUNG_ERR)));
+    }
 
     @Test
     public void signUpLandscapeOrientationAtEnd() throws InterruptedException, RemoteException {
         Thread.sleep(2000);
 
-        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
         closeSoftKeyboard();
         onView(withId(R.id.dateOfBirth))
                 .perform(scrollTo(), click());
@@ -203,89 +205,90 @@ public class MainActivityTest {
                 .check(matches(withText(Constants.AGE_TO_YOUNG_ERR)));
     }
 
-//    @Test
-//    public void validatesIsOfAgeLandscape() throws InterruptedException, RemoteException {
-//        Thread.sleep(2000);
-//        UiDevice device = UiDevice.getInstance(getInstrumentation());
-//        device.setOrientationLeft();
-//
-//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
-//        closeSoftKeyboard();
-//        onView(withId(R.id.dateOfBirth))
-//                .perform(ViewActions.scrollTo(), click());
-//
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-//                2000, 11, 31));
-//
-//        Thread.sleep(2000);
-//
-//        onView(withText("OK")).perform(click());
-//        onView(withId(R.id.dateOfBirthInfo))
-//                .check(matches(withText("12-01-2000"))); //date is being calculated wrong
-//    }
+    @Test
+    public void validatesIsOfAgeLandscape() throws InterruptedException, RemoteException {
+        Thread.sleep(2000);
+        UiDevice device = UiDevice.getInstance(getInstrumentation());
+        device.setOrientationLeft();
+        Thread.sleep(2000);
 
-//    @Test
-//    public void validatesIsOfAge() throws InterruptedException {
-//        Thread.sleep(2000);
-//
-//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
-//        closeSoftKeyboard();
-//        onView(withId(R.id.dateOfBirth))
-//                .perform(scrollTo()).perform(click());
-//
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-//                2000, 11, 31));
-//
-//        Thread.sleep(2000);
-//
-//        onView(withText("OK")).perform(click());
-//        onView(withId(R.id.dateOfBirthInfo))
-//                .check(matches(withText("12-01-2000"))); //date is being calculated wrong TODO fix this
-//    }
+        onView(withId(R.id.name)).perform(replaceText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(replaceText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(replaceText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(replaceText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(replaceText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+                .perform(scrollTo(), click());
 
-//    @Test
-//    public void ValidateIntent() throws InterruptedException {
-//        Thread.sleep(2000);
-//
-//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
-//        closeSoftKeyboard();
-//        onView(withId(R.id.dateOfBirth))
-//                .perform(ViewActions.scrollTo(), click());
-//
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-//                2000, 11, 31));
-//
-//        Thread.sleep(2000);
-//
-//        onView(withText("OK")).perform(click());
-//        onView(withId(R.id.dateOfBirthInfo))
-//                .check(matches(withText("12-01-2000"))); //date is being calculated wrong TODO fix this
-//    }
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                2000, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(click());
+        onView(withId(R.id.dateOfBirthInfo))
+                .check(matches(withText("12-01-2000"))); //date is being calculated wrong
+    }
+
+    @Test
+    public void validatesIsOfAge() throws InterruptedException {
+        Thread.sleep(2000);
+
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+                .perform(scrollTo()).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                2000, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(click());
+        onView(withId(R.id.dateOfBirthInfo))
+                .check(matches(withText("12-01-2000"))); //date is being calculated wrong TODO fix this
+    }
+
+    @Test
+    public void ValidateIntent() throws InterruptedException {
+        Thread.sleep(2000);
+
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+                .perform(scrollTo(), click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                2000, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(click());
+        onView(withId(R.id.dateOfBirthInfo))
+                .check(matches(withText("12-01-2000"))); //date is being calculated wrong TODO fix this
+    }
 
 //    @Test
 //    public void gotoTabSwitcherActivity() throws InterruptedException {
 //        Thread.sleep(2000);
 //
-//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-//        onView(withId(R.id.occupation)).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-//        onView(withId(R.id.description)).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+//        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+//        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+//        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+//        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+//        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
 //        closeSoftKeyboard();
 //        onView(withId(R.id.dateOfBirth))
-//                .perform(ViewActions.scrollTo(), click());
+//                .perform(scrollTo(), click());
 //
 //        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
 //                2000, 11, 31));
@@ -293,7 +296,7 @@ public class MainActivityTest {
 //        onView(withText("OK")).perform(click());
 //        try {
 //            Intents.init();
-//            onView(withId(R.id.signUpButton)).perform(ViewActions.scrollTo(), click());
+//            onView(withId(R.id.signUpButton)).perform(scrollTo(), click());
 //            intended(AllOf.allOf(
 ////                    hasComponent(TabSwitcherActivity.class.getName()),
 //                    hasExtraWithKey(Constants.KEY_NAME),
@@ -308,7 +311,6 @@ public class MainActivityTest {
 //            Intents.release();
 //        }
 //    }
-
 }
 
 
