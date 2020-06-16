@@ -17,7 +17,9 @@ public class Constants {
     static final String TEST_KEY_USERNAME = "JeyKey98";
     static final String TEST_KEY_DateOfBirth = "03-20-1998";
     static final String TEST_KEY_OCCUPATION = "MOBDEV SOFTWARE GURU NINJA ROCKSTAR";
+    static final String TEST_KEY_OCCUPATION_LONG = "MOBDEV SOFTWARE GURU NINJA ROCKSTAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     static final String TEST_KEY_DESCRIPTION = "I love sushi";
+    static final String TEST_KEY_DESCRIPTION_LONG = "I love sushi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     static final String TEST_KEY_EMPTY = "";
     static final String TEST_NAME_NOSPACE = "JennyKunte";
     static final String TEST_NAME_TO_LONG = "Lololololololololololololololololololo Oasasasasasasassassasasass";
@@ -34,7 +36,9 @@ public class Constants {
     static final String AGE_ERR ="Age can't be empty.";
     static final String AGE_TO_YOUNG_ERR = "You have to be 18 years old!";
     static final String OCC_ERR ="Occupation can't be empty. Please add it";
+    static final String OCC_ERR_LONG = "Your Occupation is to long, find a new job!";
     static final String DES_ERR ="Description can't be empty. Please add it";
+    static final String DES_ERR_LONG ="Description is too long.";
 
 
     //default settings

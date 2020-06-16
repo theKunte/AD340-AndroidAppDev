@@ -186,7 +186,8 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
         if (usernameInput.length() > 80) {
-            occupation.setError("Your Occupation is to long, find a new job!");
+            occupation.setError(Constants.OCC_ERR_LONG);
+            return false;
         }
         return true;
     }
@@ -195,11 +196,12 @@ public class SignUpActivity extends AppCompatActivity {
         String usernameInput = description.getText().toString().trim();
 
         if (usernameInput.isEmpty()) {
-            description.setError("Description can't be empty. Please add it");
+            description.setError(Constants.DES_ERR);
             return false;
         }
-        if (usernameInput.length() > 1000) {
-            description.setError("Your Description is to long, make it short and sweet!");
+        if (usernameInput.length() > 80) {
+            description.setError(Constants.DES_ERR_LONG);
+            return false;
         }
         return true;
     }

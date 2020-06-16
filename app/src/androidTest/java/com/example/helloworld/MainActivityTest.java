@@ -180,6 +180,105 @@ public class MainActivityTest {
     }
 
     @Test
+    public void occupationTooLong() throws InterruptedException {
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION_LONG), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+                .perform(scrollTo()).perform(scrollTo()).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                1998, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(scrollTo()).perform(scrollTo()).perform(click());
+        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+
+        onView(withId(R.id.occupation))
+                .check(matches(
+                        ViewMatchers.hasErrorText(Constants.OCC_ERR_LONG)));
+    }
+
+    @Test
+    public void occupationEmpty() throws InterruptedException {
+        Thread.sleep(2000);
+
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+//        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.KEY_EMPTY), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+                .perform(scrollTo()).perform(scrollTo()).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                1998, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(scrollTo()).perform(scrollTo()).perform(click());
+        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+
+        onView(withId(R.id.occupation))
+                .check(matches(
+                        ViewMatchers.hasErrorText(Constants.OCC_ERR)));
+    }
+
+    @Test
+    public void descriptionTooLong() throws InterruptedException {
+
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION_LONG), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+                .perform(scrollTo()).perform(scrollTo()).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                1998, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(scrollTo()).perform(scrollTo()).perform(click());
+        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+        onView(withId(R.id.description))
+                .check(matches(
+                        ViewMatchers.hasErrorText(Constants.DES_ERR_LONG)));
+    }
+
+    @Test
+    public void descriptionEmpty() throws InterruptedException {
+        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+//        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+        closeSoftKeyboard();
+        onView(withId(R.id.dateOfBirth))
+                .perform(scrollTo()).perform(scrollTo()).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+                1998, 11, 31));
+
+        Thread.sleep(2000);
+
+        onView(withText("OK")).perform(scrollTo()).perform(scrollTo()).perform(click());
+
+        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+
+        onView(withId(R.id.description))
+                .check(matches(
+                        ViewMatchers.hasErrorText(Constants.DES_ERR)));
+    }
+
+    @Test
     public void signUpLandscapeOrientationAtEnd() throws InterruptedException, RemoteException {
         Thread.sleep(2000);
 
