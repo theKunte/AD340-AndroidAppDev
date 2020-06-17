@@ -56,15 +56,15 @@ public class SignUpActivityTests {
         onView(withId(R.id.username)).check(matches(withText(Constants.TEST_KEY_USERNAME)));
     }
 
-    @Test
-    public void usernameTooLong() {
-        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME_LONG), closeSoftKeyboard());
-        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
-        onView(withId(R.id.username)).check(matches(
-                ViewMatchers.hasErrorText(Constants.USERNAME_TO_LONG)));
-    }
+//    @Test
+//    public void usernameTooLong() {
+//        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+//        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+//        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME_LONG), closeSoftKeyboard());
+//        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+//        onView(withId(R.id.username)).check(matches(
+//                ViewMatchers.hasErrorText(Constants.USERNAME_TO_LONG)));
+//    }
 
     @Test
     public void hasValidEmail() {
