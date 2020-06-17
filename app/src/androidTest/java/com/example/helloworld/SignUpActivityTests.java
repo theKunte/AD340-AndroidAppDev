@@ -41,7 +41,7 @@ import androidx.test.rule.ActivityTestRule;
 public class SignUpActivityTests {
     @Rule
     public ActivityTestRule<SignUpActivity> activityTestRule =
-            new ActivityTestRule<>(SignUpActivity.class);
+            new ActivityTestRule<>(SignUpActivity.class, true, true);
 
     @Test
     public void hasLogoImage() {

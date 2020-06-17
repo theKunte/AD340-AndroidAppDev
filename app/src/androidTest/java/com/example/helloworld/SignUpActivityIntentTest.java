@@ -38,9 +38,10 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 @RunWith(AndroidJUnit4.class)
 
 public class SignUpActivityIntentTest {
+
     @Rule
     public ActivityTestRule<SignUpActivity> activityTestRule =
-            new ActivityTestRule<>(SignUpActivity.class);
+            new ActivityTestRule<>(SignUpActivity.class, true, true);
 
     @Test
     public void ValidateIntent() throws InterruptedException {
