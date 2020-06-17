@@ -283,31 +283,31 @@ public class SignUpActivityTests {
                         ViewMatchers.hasErrorText(Constants.DES_ERR)));
     }
 
-    @Test
-    public void signUpLandscapeOrientationAtEnd() throws InterruptedException, RemoteException {
-        Thread.sleep(2000);
-
-        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
-        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
-        closeSoftKeyboard();
-        onView(withId(R.id.dateOfBirth))
-                .perform(scrollTo(), click());
-
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
-                2009, 11, 31));
-
-        Thread.sleep(2000);
-
-        onView(withText("OK")).perform(click());
-        UiDevice device = UiDevice.getInstance(getInstrumentation());
-        device.setOrientationLeft();
-
-        onView(withId(R.id.dateOfBirthInfo))
-                .check(matches(withText(Constants.AGE_TO_YOUNG_ERR)));
-    }
+//    @Test
+//    public void signUpLandscapeOrientationAtEnd() throws InterruptedException, RemoteException {
+//        Thread.sleep(2000);
+//
+//        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+//        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+//        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
+//        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
+//        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
+//        closeSoftKeyboard();
+//        onView(withId(R.id.dateOfBirth))
+//                .perform(scrollTo(), click());
+//
+//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(
+//                2009, 11, 31));
+//
+//        Thread.sleep(2000);
+//
+//        onView(withText("OK")).perform(click());
+//        UiDevice device = UiDevice.getInstance(getInstrumentation());
+//        device.setOrientationLeft();
+//
+//        onView(withId(R.id.dateOfBirthInfo))
+//                .check(matches(withText(Constants.AGE_TO_YOUNG_ERR)));
+//    }
 
     @Test
     public void validatesIsOfAgeLandscape() throws InterruptedException, RemoteException {
