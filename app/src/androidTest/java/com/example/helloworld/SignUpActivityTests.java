@@ -98,15 +98,15 @@ public class SignUpActivityTests {
         onView(withId(R.id.description)).check(matches(withText(Constants.TEST_KEY_DESCRIPTION)));
     }
 
-    @Test
-    public void hasNoName() throws InterruptedException {
-        Thread.sleep(2000);
-        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
-        closeSoftKeyboard();
-        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
-        onView(withId(R.id.name)).check(matches(
-                ViewMatchers.hasErrorText(Constants.NAME_ERR)));
-    }
+//    @Test
+//    public void hasNoName() throws InterruptedException {
+//        Thread.sleep(2000);
+//        onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
+//        closeSoftKeyboard();
+//        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+//        onView(withId(R.id.name)).check(matches(
+//                ViewMatchers.hasErrorText(Constants.NAME_ERR)));
+//    }
     
     @Test
     public void hasNoSpaceInName() {
