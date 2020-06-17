@@ -105,8 +105,7 @@ public class SignUpActivityTests {
         onView(withId(R.id.name)).check(matches(
                 ViewMatchers.hasErrorText(Constants.NAME_ERR)));
     }
-
-
+    
     @Test
     public void hasNoSpaceInName() {
         onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_NAME_NOSPACE), closeSoftKeyboard());
