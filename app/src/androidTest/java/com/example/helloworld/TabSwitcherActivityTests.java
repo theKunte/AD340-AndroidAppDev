@@ -66,7 +66,6 @@ public class TabSwitcherActivityTests {
 //
 //        intending(toPackage("com.example.helloworld.TabSwitcherActivity")).respondWith(result);
 //
-//
 //    }
 
 }
