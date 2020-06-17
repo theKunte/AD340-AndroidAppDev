@@ -161,6 +161,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
         if (usernameInput.length() > 15) {
             username.setError(Constants.USERNAME_TO_LONG);
+            return false;
         }
         return true;
     }

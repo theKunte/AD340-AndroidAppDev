@@ -15,12 +15,14 @@ public class Constants {
     static final String TEST_KEY_NAME = "Jenny Kunte";
     static final String TEST_KEY_EMAIL = "j.kunte@gmx.net";
     static final String TEST_KEY_USERNAME = "JeyKey98";
+    static final String TEST_KEY_USERNAME_LONG = "JeyKey98123456789012345667";
     static final String TEST_KEY_DateOfBirth = "03-20-1998";
     static final String TEST_KEY_OCCUPATION = "MOBDEV SOFTWARE GURU NINJA ROCKSTAR";
     static final String TEST_KEY_OCCUPATION_LONG = "MOBDEV SOFTWARE GURU NINJA ROCKSTAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     static final String TEST_KEY_DESCRIPTION = "I love sushi";
     static final String TEST_KEY_DESCRIPTION_LONG = "I love sushi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     static final String TEST_KEY_EMPTY = "";
+    static final String TEST_KEY_AGE = "22";
     static final String TEST_NAME_NOSPACE = "JennyKunte";
     static final String TEST_NAME_TO_LONG = "Lololololololololololololololololololo Oasasasasasasassassasasass";
     static final String USERNAME_TO_LONG = "Your Username is to long!";

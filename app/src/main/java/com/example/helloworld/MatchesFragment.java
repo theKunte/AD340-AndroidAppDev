@@ -52,7 +52,7 @@ FirebaseMatchesViewModel viewModel;
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            Toast.makeText(getContext(), "Location changed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.LocationChangedMsg, Toast.LENGTH_SHORT).show();
         }
 
         private boolean isLocationEnabled() {
@@ -81,16 +81,18 @@ FirebaseMatchesViewModel viewModel;
             if (loadedSettings == null) {
                 loadedSettings = new Settings();
                 loadedSettings.setDefaultValues();
-                Toast.makeText(getContext(), "Use default settings", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.UseDefaultSettingsMsg, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getContext(), "Settings Loaded", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.SettingsLoadedMsg, Toast.LENGTH_LONG).show();
             }
 
             if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60 * 1000, 10, locationListenerNetwork);
-                Toast.makeText(getContext(), "Location set", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.LocationSetMsg, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getContext(), R.string.CouldntGetLocationMsg, Toast.LENGTH_LONG).show();
             }
         };
 

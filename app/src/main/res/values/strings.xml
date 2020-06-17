@@ -56,5 +56,10 @@
     <string name="max_age">Max Age</string>
     <string name="Updated">Updated</string>
     <string name="set">Set</string>
+    <string name="CouldntGetLocationMsg">Unable to get location on device.  Please give app location permissions</string>
+    <string name="LocationSetMsg">Location set</string>
+    <string name="SettingsLoadedMsg">Settings Loaded</string>
+    <string name="UseDefaultSettingsMsg">Use default settings</string>
+    <string name="LocationChangedMsg">Location changed</string>
     >
 </resources>

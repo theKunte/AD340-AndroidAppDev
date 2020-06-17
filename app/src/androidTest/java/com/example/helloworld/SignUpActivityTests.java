@@ -33,22 +33,15 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-
 import androidx.test.rule.ActivityTestRule;
 
 
 @RunWith(AndroidJUnit4.class)
 
-public class MainActivityTest {
+public class SignUpActivityTests {
     @Rule
     public ActivityTestRule<SignUpActivity> activityTestRule =
             new ActivityTestRule<>(SignUpActivity.class);
-
-//    @Rule
-//    public IntentsTestRule<SignUpActivity> intentsTestRule =
-//            new IntentsTestRule<>(SignUpActivity.class);
 
     @Test
     public void hasLogoImage() {
@@ -61,6 +54,16 @@ public class MainActivityTest {
         onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.username)).check(matches(withText(Constants.TEST_KEY_USERNAME)));
+    }
+
+    @Test
+    public void usernameTooLong() {
+        onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
+        onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_USERNAME_LONG), closeSoftKeyboard());
+        onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
+        onView(withId(R.id.username)).check(matches(
+                ViewMatchers.hasErrorText(Constants.USERNAME_TO_LONG)));
     }
 
     @Test
@@ -98,7 +101,6 @@ public class MainActivityTest {
     @Test
     public void hasNoName() {
         onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
-
         onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
         onView(withId(R.id.name)).check(matches(
                 ViewMatchers.hasErrorText(Constants.NAME_ERR)));
@@ -108,7 +110,6 @@ public class MainActivityTest {
     @Test
     public void hasNoSpaceInName() {
         onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_NAME_NOSPACE), closeSoftKeyboard());
-
         onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
         onView(withId(R.id.name)).check(matches(
                 ViewMatchers.hasErrorText(Constants.NAME_NO_SPACE_ERR)));
@@ -117,7 +118,6 @@ public class MainActivityTest {
     @Test
     public void nameIsToLong() {
         onView(withId(R.id.name)).perform(typeText(Constants.TEST_NAME_TO_LONG), closeSoftKeyboard());
-
         onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
         onView(withId(R.id.name)).check(matches(
                 ViewMatchers.hasErrorText(Constants.TEST_NAME_TO_LONG_ERR)));
@@ -128,7 +128,6 @@ public class MainActivityTest {
         onView(withId(R.id.name)).perform(typeText(Constants.TEST_KEY_NAME), closeSoftKeyboard());
         onView(withId(R.id.email)).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
         onView(withId(R.id.username)).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
-
         onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
         onView(withId(R.id.username)).check(matches(
                 ViewMatchers.hasErrorText(Constants.USERNAME_ERR)));
