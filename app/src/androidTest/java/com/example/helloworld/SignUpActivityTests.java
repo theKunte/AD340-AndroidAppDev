@@ -102,10 +102,6 @@ public class SignUpActivityTests {
     public void hasNoName() throws InterruptedException {
         Thread.sleep(2000);
         onView(withId(R.id.name)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMPTY), closeSoftKeyboard());
-        onView(withId(R.id.email)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_EMAIL), closeSoftKeyboard());
-        onView(withId(R.id.username)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_USERNAME), closeSoftKeyboard());
-        onView(withId(R.id.occupation)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_OCCUPATION), closeSoftKeyboard());
-        onView(withId(R.id.description)).perform(scrollTo()).perform(typeText(Constants.TEST_KEY_DESCRIPTION), closeSoftKeyboard());
         closeSoftKeyboard();
         onView(withId(R.id.signUpButton)).perform(scrollTo()).perform(click());
         onView(withId(R.id.name)).check(matches(
