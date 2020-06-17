@@ -46,10 +46,10 @@ public class TabSwitcherActivityTests {
     public ActivityTestRule<TabSwitcherActivity> activityTestRule =
             new ActivityTestRule<>(TabSwitcherActivity.class);
 
-//    @Test
-//    public void hasLogoImage() {
+    @Test
+    public void hasLogoImage() {
 //        onView(withId(R.id.logoImage)).check(matches(isDisplayed()));
-//    }
+    }
 
 //    @Test
 //    public void ProfileFragmentMatchesIntent() {
